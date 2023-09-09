@@ -292,6 +292,30 @@
     /* Additional styling for the white section */
 }
 
+.YellowSecText {
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    top: 80px;
+    line-height: 2;
+    
+}
+
+
+
+.slide-up {
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slide-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
         
         /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
@@ -539,7 +563,14 @@
     <div class="arrow right" onclick="showNextProject()">&#8250;</div>
 </div>
  
-    <div class="yellow-section"></div>
+
+
+    <div class="yellow-section">
+
+        <div class="YellowSecText slide-up">Hey, there! I'm a professional Video Editor on Upwork. <br> I master at adding Motion Graphics and Animations.</div>
+
+
+    </div>
     <div class="white-section"></div>
     
 
@@ -710,6 +741,36 @@ const button = document.getElementById('seeMoreButton');
         button.style.transition = 'transform 0.2s ease'; // Restore transition for the return animation
         button.style.transform = 'translate(0, 0)';
     }
+
+
+
+//TEXXT IN YELLOW WALA SECTION KI ANIMATION THING
+    const yellowSecText = document.querySelector('.YellowSecText');
+
+// Function to check if the element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Function to show the element with a slide-up animation
+function showYellowSecText() {
+    if (isInViewport(yellowSecText)) {
+        yellowSecText.style.opacity = '1';
+        yellowSecText.style.transform = 'translateY(0)';
+        yellowSecText.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        window.removeEventListener('scroll', showYellowSecText); // Remove the event listener once shown
+    }
+}
+
+// Attach an event listener to the scroll event
+window.addEventListener('scroll', showYellowSecText);
+
     </script>
     
     
