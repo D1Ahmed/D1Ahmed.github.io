@@ -327,11 +327,7 @@
    
 }
 
-.white-section {
-    background-color: white;
-    height: 100vh; /* 50% of the viewport height */
-    /* Additional styling for the white section */
-}
+
 
 .YellowSecText {
     position: relative;
@@ -344,7 +340,7 @@
 }
 
 
-
+/*Yellow section ki text ki  animation ka CSS*/
 .slide-up {
     position: relative;
     opacity: 0;
@@ -357,8 +353,70 @@
     transform: translateY(0);
 }
 
+.white-section {
+    background-color: white;
+    height: 100vh; /* Adjust the height as needed */
+    padding: 20px; /* Add padding to space the content from the edges */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    
+}
 
-        
+.offering h1 {
+     text-align: center;
+    position: relative;
+    top: 200%;
+    font-weight: bold;
+
+}
+
+.services {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 200px; /* Gap between columns (horizontal gap) */
+    row-gap: 80px; /* Gap between rows (vertical gap) */
+    justify-items: flex-start; /* Left-align the services */
+    top: 20%;
+
+}
+
+.service {
+    
+  
+    position: relative;
+    top: 30%;
+    border-radius: 10px; /* Add rounded corners to each service box */
+    justify-items: flex-start; /* Left-align the services */
+    max-width: 400px; /* Limit the maximum width of each service box */
+    font-size: 20px;
+    
+}
+
+.service h2 {
+    font-weight: bold;
+    padding-bottom:  20px;
+    margin-bottom: 10px; /* Add margin below the heading */
+    color: rgb(255, 0, 72);
+}
+
+.animate-element {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-element.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.Bottom{
+    background-color: black;
+    height: 50vh; /* Adjust the height as needed */
+}
         /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
 
 
@@ -594,7 +652,7 @@
     
 
 
-    <!-- Add this below your text overlay -->
+   
     <div class="yellow-line"></div>
 
     <!-- Left arrow -->
@@ -605,7 +663,7 @@
 </div>
  
 
-
+<!--==========================================Yellow wala section===========================================-->
     <div class="yellow-section">
 
         <div class="YellowSecText slide-up">Hey, there! I'm a professional Video Editor on Upwork. <br> I master at adding Motion Graphics and Animations.</div>
@@ -613,9 +671,37 @@
 
     </div>
 
-
-    <div class="white-section"></div>
+<!--==========================================white wala section============================================-->
+<div class="white-section">
+    <div class="offering animate-element">
+        <h1>Here's what I can do for you:</h1>
+    </div>
+    <div class="services">
+        <div class="service serviceUp animate-element">
+            <h2>Motion Graphics</h2>
+            <p>From small teasers, to explainers, to full storytelling experiences, I will help you move ideas around.</p>
+        </div>
+        <div class="service serviceUp animate-element">
+            <h2>Animated Interactions</h2>
+            <p>UX is only complete with engaging animations. These are great for showcase or to guide a dev team.</p>
+        </div>
+        <div class="service serviceDown animate-element">
+            <h2>Webflow Development</h2>
+            <p>Bringing visual design, animation and development together to uplift your digital presence.</p>
+        </div>
+        <div class="service serviceDown animate-element">
+            <h2>Education</h2>
+            <p>If you have a team ready to dive into the world of Motion Graphics, I would be delighted to help.</p>
+        </div>
+    </div>
+</div>
     
+<div class="Bottom">
+
+<h1 class="BH1">Let's work together</h1>
+
+</div>
+
 
     <script>
       // JavaScript to toggle the mobile menu
@@ -748,7 +834,7 @@ document.getElementById(`project${currentProject}`).style.display = 'block';
 
 
 
-// ==========================---------SEE MORE PROJECT BUTTON KI FOLLOW ANIMATION HEHE
+// ==========================---------SEE MORE PROJECT BUTTON KI FOLLOW ANIMATION HEHE==================================
 const button = document.getElementById('seeMoreButton');
     let isHovering = false;
 
@@ -787,7 +873,9 @@ const button = document.getElementById('seeMoreButton');
 
 
 
-//===================================TEXXT IN YELLOW WALA SECTION KI ANIMATION THING
+//===================================TEXXT IN YELLOW WALA SECTION KI ANIMATION THING==========================================
+
+
 const yellowSecText = document.querySelector('.YellowSecText');
 let isYellowSecTextVisible = false; // Flag to track visibility
 
@@ -828,10 +916,7 @@ toggleYellowSecTextVisibility();
 window.addEventListener('scroll', toggleYellowSecTextVisibility);
 
 
-//==================MORE ABOUT ME BUTTON KI ANIMATION THINGY LOL
-
-
-
+//======================================MORE ABOUT ME BUTTON KI ANIMATION THINGY LOL===============================================
 
 
 
@@ -868,6 +953,42 @@ function resetButtonPosition() {
     moreAboutMeButton.style.transition = 'transform 0.2s ease';
     moreAboutMeButton.style.transform = 'translate(0, 0)';
 }
+
+
+
+
+
+//==============================================white waly section k elements ki animations===============================
+
+
+
+// Function to toggle the visibility of elements based on their visibility in the viewport
+function toggleElementsVisibility() {
+    const offering = document.querySelector('.offering');
+    const serviceUpElements = document.querySelectorAll('.serviceUp.animate-element');
+    const serviceDownElements = document.querySelectorAll('.serviceDown.animate-element');
+
+    offering.style.opacity = isInViewport(offering) ? '1' : '0';
+    offering.style.transform = isInViewport(offering) ? 'translateY(0)' : 'translateY(40px)';
+
+    serviceUpElements.forEach((serviceUp) => {
+        const isVisible = isInViewport(serviceUp);
+        serviceUp.style.opacity = isVisible ? '1' : '0';
+        serviceUp.style.transform = isVisible ? 'translateY(0)' : 'translateY(40px)';
+    });
+
+    serviceDownElements.forEach((serviceDown) => {
+        const isVisible = isInViewport(serviceDown);
+        serviceDown.style.opacity = isVisible ? '1' : '0';
+        serviceDown.style.transform = isVisible ? 'translateY(0)' : 'translateY(40px)';
+    });
+}
+
+// Initial check to toggle the visibility of elements
+toggleElementsVisibility();
+
+// Attach an event listener to the scroll event
+window.addEventListener('scroll', toggleElementsVisibility);
 
     </script>
     
