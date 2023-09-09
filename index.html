@@ -286,6 +286,47 @@
     /* Additional styling for the yellow section */
 }
 
+#moreAboutMeButton {
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid black; /* Initial border color */
+    color: black;
+    padding: 10px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    left: 45%;
+    top: 135%;
+   
+    
+}
+
+#moreAboutMeButton::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: black;
+    transition: height 0.3s ease;
+    z-index: -1;
+   
+}
+
+#moreAboutMeButton:hover::before {
+    height: 100%;
+  
+}
+
+#moreAboutMeButton:hover {
+    color: white; /* Change text color on hover */
+   
+    transform: scale(1.05); /* Add a slight scale effect on hover */
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease; /* Add transitions */
+   
+}
+
 .white-section {
     background-color: white;
     height: 100vh; /* 50% of the viewport height */
@@ -564,13 +605,15 @@
 </div>
  
 
-
+<!--============================== YELLOW SECTION CONTENT ================================-->>
     <div class="yellow-section">
 
         <div class="YellowSecText slide-up">Hey, there! I'm a professional Video Editor on Upwork. <br> I master at adding Motion Graphics and Animations.</div>
-
+        <button id="moreAboutMeButton">More About Me</button>
 
     </div>
+
+    <!--============================== White SECTION CONTENT ================================-->>
     <div class="white-section"></div>
     
 
@@ -705,7 +748,7 @@ document.getElementById(`project${currentProject}`).style.display = 'block';
 
 
 
-
+// ==========================---------SEE MORE PROJECT BUTTON KI FOLLOW ANIMATION HEHE
 const button = document.getElementById('seeMoreButton');
     let isHovering = false;
 
@@ -729,7 +772,7 @@ const button = document.getElementById('seeMoreButton');
             const deltaX = mouseX - buttonX;
             const deltaY = mouseY - buttonY;
             const moveX = deltaX / 5; /* Increase the movement factor for more intensity */
-            const moveY = deltaY / 5; /* Increase the movement factor for more intensity */
+            const moveY = deltaY / 1; /* Increase the movement factor for more intensity */
             const offsetX = 0; /* Adjust the horizontal offset */
             const offsetY = 0; /* Adjust the vertical offset */
 
@@ -744,8 +787,9 @@ const button = document.getElementById('seeMoreButton');
 
 
 
-//TEXXT IN YELLOW WALA SECTION KI ANIMATION THING
-    const yellowSecText = document.querySelector('.YellowSecText');
+//===================================TEXXT IN YELLOW WALA SECTION KI ANIMATION THING
+const yellowSecText = document.querySelector('.YellowSecText');
+let isYellowSecTextVisible = false; // Flag to track visibility
 
 // Function to check if the element is in the viewport
 function isInViewport(element) {
@@ -758,18 +802,72 @@ function isInViewport(element) {
     );
 }
 
-// Function to show the element with a slide-up animation
-function showYellowSecText() {
+// Function to show/hide the element based on visibility
+function toggleYellowSecTextVisibility() {
     if (isInViewport(yellowSecText)) {
-        yellowSecText.style.opacity = '1';
-        yellowSecText.style.transform = 'translateY(0)';
-        yellowSecText.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        window.removeEventListener('scroll', showYellowSecText); // Remove the event listener once shown
+        if (!isYellowSecTextVisible) {
+            yellowSecText.style.opacity = '1';
+            yellowSecText.style.transform = 'translateY(0)';
+            yellowSecText.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            isYellowSecTextVisible = true; // Update visibility flag
+        }
+    } else {
+        if (isYellowSecTextVisible) {
+            yellowSecText.style.opacity = '0';
+            yellowSecText.style.transform = 'translateY(40px)';
+            yellowSecText.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            isYellowSecTextVisible = false; // Update visibility flag
+        }
     }
+  
 }
 
+// Initial check to show/hide text
+toggleYellowSecTextVisibility();
 // Attach an event listener to the scroll event
-window.addEventListener('scroll', showYellowSecText);
+window.addEventListener('scroll', toggleYellowSecTextVisibility);
+
+
+//==================MORE ABOUT ME BUTTON KI ANIMATION THINGY LOL
+
+
+
+
+
+
+
+const moreAboutMeButton = document.getElementById('moreAboutMeButton');
+
+moreAboutMeButton.addEventListener('mouseenter', () => {
+    moreAboutMeButton.isHovering = true;
+    moreAboutMeButton.style.transition = 'transform 0.2s ease';
+});
+
+moreAboutMeButton.addEventListener('mouseleave', () => {
+    moreAboutMeButton.isHovering = false;
+    resetButtonPosition();
+});
+
+moreAboutMeButton.addEventListener('mousemove', (e) => {
+    if (moreAboutMeButton.isHovering) {
+        const buttonRect = moreAboutMeButton.getBoundingClientRect();
+        const buttonX = buttonRect.left + buttonRect.width / 2;
+        const buttonY = buttonRect.top + buttonRect.height / 2;
+        const deltaX = e.clientX - buttonX;
+        const deltaY = e.clientY - buttonY;
+        const moveX = deltaX / 2;
+        const moveY = deltaY / 1;
+        const offsetX = 0;
+        const offsetY = 0;
+
+        moreAboutMeButton.style.transform = `translate(${moveX + offsetX}px, ${moveY + offsetY}px)`;
+    }
+});
+
+function resetButtonPosition() {
+    moreAboutMeButton.style.transition = 'transform 0.2s ease';
+    moreAboutMeButton.style.transform = 'translate(0, 0)';
+}
 
     </script>
     
