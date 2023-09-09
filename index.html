@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+           
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh; /* Make the body cover 100% of the viewport height */
+  
+        }
+        .MainContent{
+            background-color: black;
+    
+    margin: 0;
+    height: 100vh; /* Make the container cover 100% of the viewport height */
+    overflow: hidden;
+        }
+
+        /* Styling for the navigation menu */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: black;    
+        }
+
+        .nav .LogoName {
+            color: white;
+            margin-left: -20px;
+            font-size: 19px;
+        }
+        .yellow-dot {
+    color: yellow;
+}
+
+        .nav .topRightContents {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            margin-right: -50px;
+        }
+
+        .nav .topRightContents li {
+            margin-right: 20px;
+        }
+
+        .nav .topRightContents a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* Styling for the mobile menu icon */
+        .mobile-menu-icon {
+            display: none; /* Initially hidden on desktop */
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            z-index: 2;
+        }
+
+        /* Styling for the mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -780px; /* Adjust the width of the menu */
+            width: 50%; /* Adjust the width of the menu */
+            height: 100%;
+            background-color: yellow;
+            border-radius: 20px;
+            padding: 20px;
+            z-index: 1;
+            transition: right 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 30px;
+            padding: 20px 50px; /* Add vertical padding to separate elements */
+            width: 100%; /* Ensure full width for each menu item */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+        }
+
+        /* Your existing styles here */
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            margin-top: -45px;
+            float: right;
+        }
+
+        ul a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            justify-content: space-between;
+            padding: 10px;
+            transition: letter-spacing 0.3s ease; /* Add letter-spacing transition */
+        }
+
+        /* Apply letter-spacing animation on hover */
+        ul a:hover {
+            letter-spacing: 2px; /* Adjust the desired letter-spacing on hover */
+            
+        }
+        .mobile-menu ul {
+            flex-direction: column;
+        }
+
+        /* CSS for the video background */
+        .videoProject {
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            width: 40%; /* Adjust the width of the video */
+            max-height: 80%; /* Adjust the maximum height of the video */
+            z-index: -1; /* Place it behind other content */
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease, opacity 0.5s ease; /* Add transitions for filter, transform, and opacity */
+            transform-origin: center center; /* Set transform origin to the center */
+        }
+
+        .videoProject:hover {
+            filter: none;
+        }
+
+           .project {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            transition: opacity 1s ease-in-out, transform s ease-in-out;
+        }
+
+        .project video {
+            width: 40%;
+            max-height: 100%;
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
+            transform-origin: center center;
+            z-index: 0;
+        }
+
+       /* CSS for text overlay */
+.Titles {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    max-width: 80%;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.Titles h1 {
+    margin: 0;
+}
+
+.Titles h1 br {
+    display: inline-block;
+}
+
+.Titles .MG {
+    margin-top: 10%;
+    margin-left: 5%;
+}
+
+.Titles .desc {
+    margin-top: 10%;
+}
+
+.Titles .yellow-line {
+    position: absolute;
+    top: 45%;
+    left: 20px;
+    width: 4px;
+    height: 30px;
+    background-color: yellow;
+}
+        /* CSS for the arrows on both sides */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            width: 90px;
+            height: 90px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .arrow.left {
+            left: 70px;
+            border: 1px solid white;
+        }
+
+        .arrow.right {
+            right: 70px;
+            border: 1px solid white;
+        }
+
+        .arrow:hover {
+            background-color: white;
+            color: black;
+            width: 100px;
+            height: 100px;
+        }
+
+        
+        .center-button {
+        text-align: center;
+        margin-top: 1px; /* Adjust the margin as needed */
+    }
+
+    #seeMoreButton {
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
+    position: absolute; /* Position the button absolutely */
+    left: 45%; /* Center horizontally */
+    top: 85%
+   
+}
+
+#seeMoreButton:hover {
+    background-color: yellow;
+    color: black;
+    transform: scale(1.05);
+}
+
+
+    .yellow-section {
+    background-color: yellow;
+    height: 50vh; /* 50% of the viewport height */
+    /* Additional styling for the yellow section */
+}
+
+.white-section {
+    background-color: white;
+    height: 100vh; /* 50% of the viewport height */
+    /* Additional styling for the white section */
+}
+
+
+        
+        /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
+
+
+        @media screen and (max-width: 1024px) {
+    .nav .topRightContents {
+        display: none; /* Hide the navigation menu on smaller screens */
+    }
+    .nav .LogoName{
+        margin-left: 10px;
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Display the mobile menu icon */
+        position: absolute;
+        top: 20px; /* Adjust the top position as needed */
+        right: 20px; /* Adjust the right position as needed */
+    }
+
+    .mobile-menu {
+        display: block; /* Display the mobile menu */
+    }
+
+    /* CSS for mobile video */
+        /* CSS for mobile video */
+        .videoProject {
+        position: absolute;
+        top: 65%; /* Center the video vertically */
+        left: 50%; /* Center the video horizontally */
+        transform: translate(-50%, -50%); /* Center the video both horizontally and vertically */
+        width: 60%; /* Adjust the width of the video */
+        max-height: 100vh; /* Adjust the maximum height of the video */
+        z-index: -1; /* Place it behind other content */
+        border-radius: 5px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
+        transform-origin: center center; /* Set transform origin to the center */
+    }
+
+    .project {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+        }
+
+        .project video {
+            width: 70%;
+            max-height: 100%;
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            transform-origin: center center;
+            z-index: 0;
+        }
+
+    /* CSS for text overlay */
+    .Titles {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+        
+        padding: 0  ;
+        
+        color: white;
+        font-size: 18px;
+        max-width: 500px;
+    }
+
+        .Titles h1 {
+            margin: 0;
+        }
+
+        .Titles h1 br {
+            display: inline;
+        }
+
+        .Titles .MG {
+            margin-top: 10%;
+            margin-left: 5%;
+        }
+
+        .Titles .desc {
+            margin-top: 10%;
+        }
+
+        .Titles .yellow-line {
+            position: absolute;
+            top: 43.5%;
+            left: 1px;
+            width: 4px;
+            height: 20px;
+            background-color: yellow;
+        }
+
+    .arrow {
+           
+            top: 40%;
+            width: 70px;
+            height: 70px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .arrow.left {
+            left: 20px;
+            border: 1px solid white;
+        }
+
+        .arrow.right {
+            right: 20px;
+            border: 1px solid white;
+        }
+
+        .arrow:hover {
+            background-color: white;
+            color: black;
+            width: 80px;
+            height: 80px;
+        }
+
+        .center-button {
+        text-align: center;
+        margin-top: 1px; /* Adjust the margin as needed */
+    }
+
+    #seeMoreButton {
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+    #seeMoreButton:hover {
+        background-color: yellow;
+        color: black;
+       
+    }
+}
+
+
+        /* Stack child elements vertically in the mobile menu */
+
+    </style>
+</head>
+<body>
+<div class="MainContent">
+
+    <div class="nav">
+        <h2 class="LogoName">d<span class="yellow-dot">.</span>A</h2>
+        <div class="mobile-menu-icon" id="mobileMenuIcon">&#9776;</div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Portfolio</a></li>
+            </ul>
+        </div>
+        <ul class="topRightContents">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Portfolio</a></li>
+        </ul>
+    </div>
+
+    <!-- Projects 1 -->
+    <div class="project" id="project1">
+        <video autoplay loop muted playsinline class="videoProject">
+            <source src="Upwork Intro Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+       <!-- description of projJEct -->   
+        <div class="Titles">
+            <h1>Intro Video</h1>
+            <p class="MG">Motion Graphics</p>     
+            <p class="desc">A short intro video showcasing <br> my editing skills.</p>
+            <div class="yellow-line"></div>     
+         </div>
+    </div>
+
+    <!-- Projects 2 -->
+    <div class="project" id="project2" style="display: none;">
+        <video autoplay loop muted playsinline class="videoProject">
+            <source src="Documentary Amouranth.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+       <!-- description of projJEct -->   
+        <div class="Titles">
+            <h1>Documentary</h1>
+            <p class="MG">Motion Graphics</p>     
+            <p class="desc">A documentary style video <br> for YouTube.</p>
+            <div class="yellow-line"></div>     
+         </div>
+    </div>
+
+    <div class="project" id="project3" style="display: none;">
+        <video autoplay loop muted playsinline class="videoProject">
+            <source src="Sample.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+       <!-- description of projJEct -->   
+        <div class="Titles">
+            <h1>Documentary</h1>
+            <p class="MG">Doc Doc</p>     
+            <p class="desc">A documentary style video <br> for YouTube.</p>
+            <div class="yellow-line"></div>     
+         </div>
+    </div>
+
+    <div class="center-button" id="centerButton">
+        <button id="seeMoreButton">See All Projects</button>
+    </div>
+    
+
+
+    <!-- Add this below your text overlay -->
+    <div class="yellow-line"></div>
+
+    <!-- Left arrow -->
+    <div class="arrow left" onclick="showPrevProject()">&#8249;</div>
+
+    <!-- Right arrow -->
+    <div class="arrow right" onclick="showNextProject()">&#8250;</div>
+</div>
+ 
+    <div class="yellow-section"></div>
+    <div class="white-section"></div>
+    
+
+    <script>
+      // JavaScript to toggle the mobile menu
+const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuIcon.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+});
+
+const videos = document.querySelectorAll('.videoProject'); // Select all video elements
+const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
+
+// Check if the screen width is greater than 1024 pixels
+if (window.innerWidth > 1024) {
+    /* ARROWS MOVEMENT THING */
+    arrows.forEach((arrow) => {
+        arrow.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const arrowX = arrow.offsetLeft + arrow.offsetWidth / 2;
+            const arrowY = arrow.offsetTop + arrow.offsetHeight / 2;
+            const deltaX = mouseX - arrowX;
+            const deltaY = mouseY - arrowY;
+            const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+            const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+
+            arrow.style.transform = `translate(${moveX}px, ${moveY - arrow.offsetHeight / 2}px)`; // Adjust the transform here
+            arrow.style.backgroundColor = 'white'; // Fill arrow circle with white
+            arrow.style.color = 'black'; // Change arrow color to black
+        });
+
+        arrow.addEventListener('mouseout', () => {
+            arrow.style.transform = 'translateY(-50%)'; // Reset to center position
+            arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Reset arrow circle color
+            arrow.style.color = 'white'; // Reset arrow color
+        });
+    });
+
+    /* Video MOVEMENT THING for all videos */
+    videos.forEach((video) => {
+        video.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const videoX = video.offsetLeft + video.offsetWidth / 2;
+            const videoY = video.offsetTop + video.offsetHeight / 2;
+            const deltaX = mouseX - videoX;
+            const deltaY = mouseY - videoY;
+            const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+            const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+
+            video.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        video.addEventListener('mouseout', () => {
+            video.style.transform = 'translate(0)';
+        });
+    });
+}
+
+let currentProject = 1;
+const totalProjects = 3; // Update this with the total number of projects
+
+function showPrevProject() {
+            if (currentProject > 1) {
+                const currentProjectElement = document.getElementById(`project${currentProject}`);
+                const nextProjectElement = document.getElementById(`project${currentProject - 1}`);
+                const currentVideo = currentProjectElement.querySelector('.videoProject');
+                const nextVideo = nextProjectElement.querySelector('.videoProject');
+                const currentTitles = currentProjectElement.querySelector('.Titles');
+                const nextTitles = nextProjectElement.querySelector('.Titles');
+
+                // Fade out the current video
+                currentVideo.style.opacity = '0';
+
+                // Fade out the current titles
+                currentTitles.style.opacity = '0';
+
+                // Wait for the fade-out animation to complete
+                setTimeout(() => {
+                    currentVideo.style.display = 'none'; // Hide the current video
+                    currentProjectElement.style.display = 'none'; // Hide the current project
+                    nextProjectElement.style.display = 'block'; // Show the next project
+
+                    // Fade in the next video
+                    nextVideo.style.opacity = '1';
+                    nextVideo.style.display = 'block'; // Show the next video
+
+                    // Fade in the next titles
+                    nextTitles.style.opacity = '1';
+                }, 500); // Adjust the duration as needed
+                currentProject--;
+            }
+        }
+
+        function showNextProject() {
+            if (currentProject < totalProjects) {
+                const currentProjectElement = document.getElementById(`project${currentProject}`);
+                const nextProjectElement = document.getElementById(`project${currentProject + 1}`);
+                const currentVideo = currentProjectElement.querySelector('.videoProject');
+                const nextVideo = nextProjectElement.querySelector('.videoProject');
+                const currentTitles = currentProjectElement.querySelector('.Titles');
+                const nextTitles = nextProjectElement.querySelector('.Titles');
+
+                // Fade out the current video
+                currentVideo.style.opacity = '0';
+
+                // Fade out the current titles
+                currentTitles.style.opacity = '0';
+
+                // Wait for the fade-out animation to complete
+                setTimeout(() => {
+                    currentVideo.style.display = 'none'; // Hide the current video
+                    currentProjectElement.style.display = 'none'; // Hide the current project
+                    nextProjectElement.style.display = 'block'; // Show the next project
+
+                    // Fade in the next video
+                    nextVideo.style.opacity = '1';
+                    nextVideo.style.display = 'block'; // Show the next video
+
+                    // Fade in the next titles
+                    nextTitles.style.opacity = '1';
+                }, 500); // Adjust the duration as needed
+                currentProject++;
+            }
+        }
+
+// Show the initial project (Project 1)
+document.getElementById(`project${currentProject}`).style.display = 'block';
+
+
+
+
+const button = document.getElementById('seeMoreButton');
+    let isHovering = false;
+
+    button.addEventListener('mouseenter', () => {
+        isHovering = true;
+        button.style.transition = 'transform 0.2s ease'; // Enable transition for smooth movement
+    });
+
+    button.addEventListener('mouseleave', () => {
+        isHovering = false;
+        resetButtonPosition();
+    });
+
+    button.addEventListener('mousemove', (e) => {
+        if (isHovering) {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const buttonRect = button.getBoundingClientRect();
+            const buttonX = buttonRect.left + buttonRect.width / 2;
+            const buttonY = buttonRect.top + buttonRect.height / 2;
+            const deltaX = mouseX - buttonX;
+            const deltaY = mouseY - buttonY;
+            const moveX = deltaX / 5; /* Increase the movement factor for more intensity */
+            const moveY = deltaY / 5; /* Increase the movement factor for more intensity */
+            const offsetX = 0; /* Adjust the horizontal offset */
+            const offsetY = 0; /* Adjust the vertical offset */
+
+            button.style.transform = `translate(${moveX + offsetX}px, ${moveY + offsetY}px)`;
+        }
+    });
+
+    function resetButtonPosition() {
+        button.style.transition = 'transform 0.2s ease'; // Restore transition for the return animation
+        button.style.transform = 'translate(0, 0)';
+    }
+    </script>
+    
+    
+</body>
+</html>
