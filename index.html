@@ -438,7 +438,7 @@
     position: relative;
     top: 50px;
 }
-#ContactButton{
+#ContactButton {
     background-color: grayscale(100%);
     border: 2px solid grayscale(100%);
     color: black;
@@ -450,7 +450,7 @@
     outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
     position: relative; /* Position the button absolutely */
     left: 45%;
-    top: 50%;
+    top: 100px;
 }
 
 #ContactButton:hover {
@@ -733,7 +733,7 @@
 
     .mobile-menu-icon {
         display: block; /* Display the mobile menu icon */
-        position: absolute;
+        position: absolute; 
         top: 20px; /* Adjust the top position as needed */
         right: 20px; /* Adjust the right position as needed */
     }
@@ -1094,19 +1094,19 @@
     <div class="services">
         <div class="service serviceUp animate-element">
             <h2>Motion Graphics</h2>
-            <p>From small teasers, to explainers, to full storytelling experiences, I will help you move ideas around.</p>
+            <p>From small documentary, to explainers, to full storytelling videos using motion graphics, I will help you move ideas around.</p>
         </div>
         <div class="service serviceUp animate-element">
             <h2>Animated Interactions</h2>
             <p>UX is only complete with engaging animations. These are great for showcase or to guide a dev team.</p>
         </div>
         <div class="service serviceDown animate-element">
-            <h2>Webflow Development</h2>
-            <p>Bringing visual design, animation and development together to uplift your digital presence.</p>
+            <h2>Front-End Web Development</h2>
+            <p>Bringing visual design, animation and development together to uplift your websites and apps.</p>
         </div>
         <div class="service serviceDown animate-element">
-            <h2>Education</h2>
-            <p>If you have a team ready to dive into the world of Motion Graphics, I would be delighted to help.</p>
+            <h2>Search Engine Optimisation</h2>
+            <p>I would brand your business and generate leads. Let's beat the competition and rank your brand</p>
         </div>
     </div>
 </div>
@@ -1421,6 +1421,43 @@ toggleElementsVisibility();
 
 // Attach an event listener to the scroll event
 window.addEventListener('scroll', toggleElementsVisibility);
+
+
+
+
+
+const contactButton = document.getElementById('ContactButton');
+
+contactButton.addEventListener('mouseenter', () => {
+    contactButton.isHovering = true;
+    contactButton.style.transition = 'transform 0.2s ease';
+});
+
+contactButton.addEventListener('mouseleave', () => {
+    contactButton.isHovering = false;
+    resetButtonPosition();
+});
+
+contactButton.addEventListener('mousemove', (e) => {
+    if (contactButton.isHovering) {
+        const buttonRect = contactButton.getBoundingClientRect();
+        const buttonX = buttonRect.left + buttonRect.width / 2;
+        const buttonY = buttonRect.top + buttonRect.height / 2;
+        const deltaX = e.clientX - buttonX;
+        const deltaY = e.clientY - buttonY;
+        const moveX = deltaX / 2; /* Adjust the movement factor as needed */
+        const moveY = deltaY / 1; /* Adjust the movement factor as needed */
+        const offsetX = 0; /* Adjust the horizontal offset */
+        const offsetY = 0; /* Adjust the vertical offset */
+
+        contactButton.style.transform = `translate(${moveX + offsetX}px, ${moveY + offsetY}px)`;
+    }
+});
+
+function resetButtonPosition() {
+    contactButton.style.transition = 'transform 0.2s ease';
+    contactButton.style.transform = 'translate(0, 0)';
+}
 
     </script>
     
