@@ -719,12 +719,16 @@
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
+
+    
     .nav .topRightContents {
         display: none; /* Hide the navigation menu on smaller screens */
     }
     .nav .LogoName{
-        margin-left: 10px;
+       
+        top: 30px; /* Adjust the top position as needed */
+    left: 25px; /* Adjust the left position as needed */
     }
 
     .mobile-menu-icon {
@@ -772,7 +776,7 @@
             transition: filter 0.3s ease, transform 0.3s ease;
             transform-origin: center center;
             z-index: 0;
-            top: 150px;
+            top: 190px;
         }
 
     /* CSS for text overlay */
@@ -918,12 +922,13 @@
 
 .white-section {
     background-color: white;
-    height: 150vh; /* Adjust the height as needed */
+    height: 120vh; /* Adjust the height as needed */
     padding: 20px; /* Add padding to space the content from the edges */
     display: flex;
     flex-direction: column;
     
     align-items: center;
+    overflow: scroll;
     
 }
 
@@ -937,13 +942,12 @@
 }
 
 .services {
-        display: flex;
-        flex-direction: column; /* Arrange services vertically */
-        align-items: center; /* Center services horizontally */
-        position: absolute;
-        top: 1180px;
-        left: 1%;
-        font-size: small;
+    display: flex;
+    flex-direction: column; /* Arrange services vertically */
+    align-items: center; /* Center services horizontally */
+    font-size: small;
+    top: 1450px;
+    left: 10px;
     }
     
     .service {
@@ -952,6 +956,7 @@
         margin: 12px 0; /* Add margin between each service box */
         padding-left:  10px;
         padding-right: 10px;
+        
     }
 
 .service h2 {
@@ -974,7 +979,7 @@
     outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
     position: relative; /* Position the button absolutely */
     left: 35%;
-    top: 50%;
+    top: 20%;
 }
 
  
