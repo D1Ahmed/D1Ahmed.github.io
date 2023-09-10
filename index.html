@@ -719,6 +719,268 @@
 }
 
 
+@media screen and (max-width: 400px) {
+    .nav .topRightContents {
+        display: none; /* Hide the navigation menu on smaller screens */
+    }
+    .nav .LogoName{
+        margin-left: 10px;
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Display the mobile menu icon */
+        position: absolute;
+        top: 20px; /* Adjust the top position as needed */
+        right: 20px; /* Adjust the right position as needed */
+    }
+
+    .mobile-menu {
+        display: block; /* Display the mobile menu */
+    }
+
+    /* CSS for mobile video */
+        /* CSS for mobile video */
+        .videoProject {
+        position: absolute;
+        top: 65%; /* Center the video vertically */
+        left: 50%; /* Center the video horizontally */
+        transform: translate(-50%, -50%); /* Center the video both horizontally and vertically */
+        width: 60%; /* Adjust the width of the video */
+        max-height: 100vh; /* Adjust the maximum height of the video */
+        z-index: -1; /* Place it behind other content */
+        border-radius: 5px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
+        transform-origin: center center; /* Set transform origin to the center */
+    }
+
+    .project {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+        }
+
+        .project video {
+            width: 80%;
+            max-height: 100%;
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            transform-origin: center center;
+            z-index: 0;
+            top: 150px;
+        }
+
+    /* CSS for text overlay */
+    .Titles {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+        color: white;
+        font-size: 18px;
+        padding: 50px;
+        
+        width: 80%; /* Set the width to 80% of the container */
+        text-align: center; /* Center the text horizontally */
+    }
+
+        .Titles h1 {
+            margin: 0;
+        }
+
+        .Titles h1 br {
+            display: inline;
+        }
+
+        .Titles .MG {
+            margin-top: 10%;
+            text-align: left;
+        }
+
+        .Titles .desc {
+            margin-top: 10%;
+            text-align: left;
+            
+        }
+
+        .Titles .yellow-line {
+            position: absolute;
+            top: 42%;
+            left: 50px;
+            width: 4px;
+            height: 20px;
+            background-color: yellow;
+        }
+
+    .arrow {
+           
+            top: 50%;
+            width: 70px;
+            height: 70px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .arrow.left {
+            left: 20px;
+            border: 1px solid white;
+        }
+
+        .arrow.right {
+            right: 20px;
+            border: 1px solid white;
+        }
+
+        .arrow:hover {
+            background-color: white;
+            color: black;
+            width: 80px;
+            height: 80px;
+        }
+
+        .center-button {
+        text-align: center;
+        margin-top: 1px; /* Adjust the margin as needed */
+    }
+
+    #seeMoreButton {
+        position: relative;
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    left: 1%;
+}
+
+#moreAboutMeButton {
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid black; /* Initial border color */
+    color: black;
+    padding: 10px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    left: 30%;
+    top: 130%;
+   
+    
+}
+
+.YellowSecText {
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    top: 20%;
+    display: block;
+    color: black;
+   
+    
+}
+
+
+/*Yellow section ki text ki  animation ka CSS*/
+.slide-up {
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slide-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.yellow-section {
+    background-color: yellow;
+    height: 40vh; 
+    
+}
+
+.white-section {
+    background-color: white;
+    height: 150vh; /* Adjust the height as needed */
+    padding: 20px; /* Add padding to space the content from the edges */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    
+}
+
+
+.offering h1 {
+     text-align: center;
+    position: relative;
+    top: 10%;
+    font-weight: bold;
+
+}
+
+.services {
+        display: flex;
+        flex-direction: column; /* Arrange services vertically */
+        align-items: center; /* Center services horizontally */
+        position: absolute;
+        top: 1180px;
+        left: 1%;
+        font-size: small;
+    }
+    
+    .service {
+        max-width: 100%; /* Allow services to take the full width of the container */
+        text-align: center; /* Center the text in each service box */
+        margin: 12px 0; /* Add margin between each service box */
+        padding-left:  10px;
+        padding-right: 10px;
+    }
+
+.service h2 {
+    font-weight: bold;
+    padding-bottom:  20px;
+    margin-bottom: 10px; /* Add margin below the heading */
+    color: rgb(255, 0, 72);
+    text-align: center;
+}
+
+#ContactButton{
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
+    position: relative; /* Position the button absolutely */
+    left: 35%;
+    top: 50%;
+}
+
+ 
+}
+
+
         /* Stack child elements vertically in the mobile menu */
 
     </style>
