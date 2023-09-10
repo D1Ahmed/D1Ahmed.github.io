@@ -19,6 +19,17 @@
             height: 100vh; /* Make the body cover 100% of the viewport height */
   
         }
+
+        .LogoName {
+    color: white;
+    font-size: 19px;
+    position: fixed;
+    top: 20px; /* Adjust the top position as needed */
+    left: 50px; /* Adjust the left position as needed */
+    cursor: pointer;
+    z-index: 3; /* Ensure it's above other elements */
+}
+
         .MainContent{
             background-color: black;
     
@@ -26,6 +37,8 @@
     height: 100vh; /* Make the container cover 100% of the viewport height */
     overflow: hidden;
         }
+
+
 
         /* Styling for the navigation menu */
         .nav {
@@ -416,7 +429,38 @@
 .Bottom{
     background-color: black;
     height: 50vh; /* Adjust the height as needed */
+    
 }
+
+.BH1{
+    color: white;
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+#ContactButton{
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
+    position: relative; /* Position the button absolutely */
+    left: 45%;
+    top: 50%;
+}
+
+#ContactButton:hover {
+    background-color: yellow;
+    color: black;
+    transform: scale(1.05);
+}
+
+
+
         /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
 
 
@@ -466,24 +510,23 @@
         }
 
         .project video {
-            width: 70%;
+            width: 80%;
             max-height: 100%;
             border-radius: 5px;
             filter: grayscale(100%);
             transition: filter 0.3s ease, transform 0.3s ease;
             transform-origin: center center;
             z-index: 0;
+            top: 200px;
         }
 
     /* CSS for text overlay */
     .Titles {
         position: absolute;
-        top: 30%;
+        top: 80%;
         left: 50%;
         transform: translate(-50%, -50%); /* Center both horizontally and vertically */
-        
         padding: 0  ;
-        
         color: white;
         font-size: 18px;
         max-width: 500px;
@@ -517,7 +560,7 @@
 
     .arrow {
            
-            top: 40%;
+            top: 60%;
             width: 70px;
             height: 70px;
             transform: translateY(-50%);
@@ -555,6 +598,7 @@
     }
 
     #seeMoreButton {
+        position: relative;
     background-color: grayscale(100%);
     border: 2px solid grayscale(100%);
     color: black;
@@ -563,13 +607,115 @@
     border-radius: 40px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    left: 1%;
 }
 
-    #seeMoreButton:hover {
-        background-color: yellow;
-        color: black;
-       
+#moreAboutMeButton {
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid black; /* Initial border color */
+    color: black;
+    padding: 10px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    left: 35%;
+    top: 130%;
+   
+    
+}
+
+.YellowSecText {
+    position: relative;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    top: 80px;
+    line-height: 2;
+    
+}
+
+
+/*Yellow section ki text ki  animation ka CSS*/
+.slide-up {
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slide-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.yellow-section {
+    background-color: yellow;
+    height: 40vh; 
+    
+}
+
+.white-section {
+    background-color: white;
+    height: 150vh; /* Adjust the height as needed */
+    padding: 20px; /* Add padding to space the content from the edges */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    
+}
+
+
+.offering h1 {
+     text-align: center;
+    position: relative;
+    top: 10%;
+    font-weight: bold;
+
+}
+
+.services {
+        display: flex;
+        flex-direction: column; /* Arrange services vertically */
+        align-items: center; /* Center services horizontally */
+        position: absolute;
+        top: 1200px;
+        left: 30px;
+        font-size: small;
     }
+    
+    .service {
+        max-width: 100%; /* Allow services to take the full width of the container */
+        text-align: left; /* Center the text in each service box */
+        margin: 20px 0; /* Add margin between each service box */
+    
+    }
+
+.service h2 {
+    font-weight: bold;
+    padding-bottom:  20px;
+    margin-bottom: 10px; /* Add margin below the heading */
+    color: rgb(255, 0, 72);
+    text-align: center;
+}
+
+#ContactButton{
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
+    position: relative; /* Position the button absolutely */
+    left: 35%;
+    top: 50%;
+}
+
+ 
 }
 
 
@@ -581,7 +727,9 @@
 <div class="MainContent">
 
     <div class="nav">
-        <h2 class="LogoName">d<span class="yellow-dot">.</span>A</h2>
+        <a href="#home">
+            <h2 class="LogoName" id="logo">d<span class="yellow-dot">.</span>A</h2>
+        </a>
         <div class="mobile-menu-icon" id="mobileMenuIcon">&#9776;</div>
         <div class="mobile-menu" id="mobileMenu">
             <ul>
@@ -695,15 +843,29 @@
         </div>
     </div>
 </div>
-    
+  
+<!--=========================================Bottom wala section==============================================-->
 <div class="Bottom">
 
 <h1 class="BH1">Let's work together</h1>
-
+<button id="ContactButton">Contact Me</button>
 </div>
 
 
     <script>
+
+document.querySelector('.LogoName').addEventListener('click', function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Add smooth scrolling animation
+    });
+});
+
+[]
+
+
+/*========================================Mobile menu===================================*/
+
       // JavaScript to toggle the mobile menu
 const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -715,9 +877,12 @@ mobileMenuIcon.addEventListener('click', () => {
 const videos = document.querySelectorAll('.videoProject'); // Select all video elements
 const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
 
+
+ /* ==========================ARROWS MOVEMENT THING ==================================*/
+
 // Check if the screen width is greater than 1024 pixels
 if (window.innerWidth > 1024) {
-    /* ARROWS MOVEMENT THING */
+   
     arrows.forEach((arrow) => {
         arrow.addEventListener('mousemove', (e) => {
             const mouseX = e.clientX;
