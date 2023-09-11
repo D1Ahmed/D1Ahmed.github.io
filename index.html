@@ -725,6 +725,7 @@
 @media screen and (max-width: 720px) {
 
     
+
     .nav .topRightContents {
         display: none; /* Hide the navigation menu on smaller screens */
     }
@@ -772,27 +773,27 @@
         }
 
         .project video {
-            width: 80%;
+            width: 90%;
             max-height: 100%;
             border-radius: 5px;
             filter: grayscale(100%);
             transition: filter 0.3s ease, transform 0.3s ease;
             transform-origin: center center;
             z-index: 0;
-            top: 190px;
+            top: 150px;
         }
 
     /* CSS for text overlay */
     .Titles {
     position: relative;
-    top: 65%;
+    top: 55%;
     left: 50%;
     color: white;
-    font-size: 60%; /* Adjust the font size as needed */
+    font-size: 80%; /* Adjust the font size as needed */
     line-height: 1.5%; /* Adjust the line height as needed */
     padding: 20% 10%; /* Adjust padding using percentages */
     text-align: left;
-    background-color: aqua;
+    
   
     max-width: 100%; /* You can adjust this percentage */
   
@@ -815,11 +816,16 @@
             display: none;
         }
 
-     
+      
+        .arrow-container{
+            position: relative;
+            top: -45%;
+        }
+
 
     .arrow {
            
-            top: 50%;
+            top: 1%;
             width: 70px;
             height: 70px;
             transform: translateY(-50%);
@@ -857,7 +863,7 @@
     }
 
     #seeMoreButton {
-        position: relative;
+        position: absolute;
     background-color: grayscale(100%);
     border: 2px solid grayscale(100%);
     color: black;
@@ -866,7 +872,9 @@
     border-radius: 40px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-    left: 1%;
+    left: 31%;
+    top: 85%;
+    
 }
 
 #moreAboutMeButton {
@@ -900,17 +908,7 @@
 
 
 /*Yellow section ki text ki  animation ka CSS*/
-.slide-up {
-    position: relative;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
 
-.slide-up.show {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 .yellow-section {
     background-color: yellow;
@@ -1157,7 +1155,7 @@ const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
  /* ==========================ARROWS MOVEMENT THING ==================================*/
 
 // Check if the screen width is greater than 1024 pixels
-if (window.innerWidth > 1024) {
+if (window.innerWidth > 1024 || window.innerWidth > 720 ) {
    
     arrows.forEach((arrow) => {
         arrow.addEventListener('mousemove', (e) => {
@@ -1318,6 +1316,7 @@ function resetSeeMoreButtonPosition() {
 
 //===================================TEXXT IN YELLOW WALA SECTION KI ANIMATION THING==========================================
 
+if (window.innerWidth > 1024 || window.innerWidth > 720 ) {
 
 const yellowSecText = document.querySelector('.YellowSecText');
 let isYellowSecTextVisible = false; // Flag to track visibility
@@ -1335,7 +1334,10 @@ function isInViewport(element) {
 
 // Function to show/hide the element based on visibility
 function toggleYellowSecTextVisibility() {
+   
+
     if (isInViewport(yellowSecText)) {
+        // Check if the element is in the viewport
         if (!isYellowSecTextVisible) {
             yellowSecText.style.opacity = '1';
             yellowSecText.style.transform = 'translateY(0)';
@@ -1343,6 +1345,7 @@ function toggleYellowSecTextVisibility() {
             isYellowSecTextVisible = true; // Update visibility flag
         }
     } else {
+        // Check if the element is out of the viewport
         if (isYellowSecTextVisible) {
             yellowSecText.style.opacity = '0';
             yellowSecText.style.transform = 'translateY(40px)';
@@ -1350,7 +1353,6 @@ function toggleYellowSecTextVisibility() {
             isYellowSecTextVisible = false; // Update visibility flag
         }
     }
-  
 }
 
 // Initial check to show/hide text
@@ -1358,7 +1360,7 @@ toggleYellowSecTextVisibility();
 // Attach an event listener to the scroll event
 window.addEventListener('scroll', toggleYellowSecTextVisibility);
 
-
+}
 //======================================MORE ABOUT ME BUTTON KI ANIMATION THINGY LOL===============================================
 
 
@@ -1407,6 +1409,16 @@ function resetMoreAboutMeButtonPosition() {
 //==============================================white waly section k elements ki animations===============================
 
 
+// Function to check if an element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
 
 // Function to toggle the visibility of elements based on their visibility in the viewport
 function toggleElementsVisibility() {
@@ -1435,8 +1447,6 @@ toggleElementsVisibility();
 
 // Attach an event listener to the scroll event
 window.addEventListener('scroll', toggleElementsVisibility);
-
-
 
 
 //========================================Contact Me Button ki Animation================================================
