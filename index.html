@@ -226,11 +226,11 @@
 }
 
 .Titles .yellow-line {
-    position: relative;
-    margin-top: -8.5%;
-    left: 1%;
+    position: absolute;
+    top: calc(48% - 5px); /* Adjust the top position as needed */
+    left: calc(5.5% - 1px); /* Adjust the left position as needed */
     width: 1.5%;
-    height: 30px;
+    height: 10%;
     background-color: yellow;
 }
         /* CSS for the arrows on both sides */
@@ -784,45 +784,38 @@
 
     /* CSS for text overlay */
     .Titles {
-        position: absolute;
-        top: 80%;
-        left: 15%;
-        transform: translate(-50%, -50%); /* Center both horizontally and vertically */
-        color: white;
-        font-size: 18px;
-        padding: 50px;
-        
-        width: 80%; /* Set the width to 80% of the container */
-        text-align: center; /* Center the text horizontally */
-    }
+    position: relative;
+    top: 65%;
+    left: 50%;
+    color: white;
+    font-size: 60%; /* Adjust the font size as needed */
+    line-height: 1.5%; /* Adjust the line height as needed */
+    padding: 20% 10%; /* Adjust padding using percentages */
+    text-align: left;
+    background-color: aqua;
+  
+    max-width: 100%; /* You can adjust this percentage */
+  
+    margin: 0;
+   
+}
 
-        .Titles h1 {
-            margin: 0;
-        }
+.MG{
+    left: -10px;
+}
 
-        .Titles h1 br {
-            display: inline;
-        }
-
-        .Titles .MG {
-            margin-top: 10%;
-            text-align: left;
-        }
-
-        .Titles .desc {
-            margin-top: 10%;
-            text-align: left;
-            
-        }
-
-        .Titles .yellow-line {
+     
+.Titles .yellow-line {
             position: absolute;
-            top: 42%;
-            left: 50px;
+            top: 40px;
+            left:50px;
             width: 4px;
             height: 20px;
             background-color: yellow;
+            display: none;
         }
+
+     
 
     .arrow {
            
@@ -893,13 +886,15 @@
 
 .YellowSecText {
     position: relative;
-    font-size: 60%;
-    font-weight: 600;
+    font-size: 50%;
+    font-weight: 600%;
     text-align: center;
     top: 20%;
     display: block;
     color: black;
-   
+    padding:20px 10px;
+    background-color: aqua;
+   border-radius: 20px;
     
 }
 
@@ -1023,18 +1018,19 @@
             <source src="Upwork Intro Video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
-       <!-- description of projJEct -->   
+    
+       <!-- Description of Project -->   
         <div class="Titles">
             <h1>Intro Video</h1>
-        <div class="MiddleText">
-            <p class="MG">Motion Graphics</p>
-            <div class="yellow-line"></div>    
-        </div>    
-            <p class="desc">A short intro video showcasing my editing skills.</p>
-              
+            <div class="MiddleText">
+                <p class="MG">Motion Graphics</p>
+                <div class="yellow-line"></div>
+            </div>
+            <p class="desc">An intro video showcasing my editing skills.</p>
         </div>
     </div>
+
+
 
     <!-- Projects 2 -->
     <div class="project" id="project2" style="display: none;">
@@ -1047,11 +1043,15 @@
         <div class="Titles">
             <h1>Documentary</h1>
             <p class="MG">Motion Graphics</p>     
-            <p class="desc">A documentary style video <br> for YouTube.</p>
-            <div class="yellow-line"></div>     
+            <p class="desc">A documentary style video for YouTube.</p>
+            <div class="yellow-line" id="yellowLine"></div>     
          </div>
     </div>
 
+
+
+
+    <!-- Project 3 -->   
     <div class="project" id="project3" style="display: none;">
         <video autoplay loop muted playsinline class="videoProject">
             <source src="Sample.mp4" type="video/mp4">
@@ -1062,8 +1062,8 @@
         <div class="Titles">
             <h1>Documentary</h1>
             <p class="MG">Doc Doc</p>     
-            <p class="desc">A documentary style video <br> for YouTube.</p>
-            <div class="yellow-line"></div>     
+            <p class="desc">A documentary style video for YouTube.</p>
+            <div class="yellow-line" id="yellowLine"></div>     
          </div>
     </div>
 
@@ -1074,7 +1074,7 @@
 
 
    
-    <div class="yellow-line"></div>
+    
 
     <!-- Left arrow -->
     <div class="arrow-container">
