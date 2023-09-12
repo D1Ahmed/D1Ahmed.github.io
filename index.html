@@ -348,7 +348,11 @@
    
 }
 
-
+.visible-on-mobile {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.5s ease, transform 0.5s ease !important;
+}
 
 .YellowSecText {
     position: relative;
@@ -897,6 +901,7 @@
     font-size: 50%;
     font-weight: 600%;
     text-align: center;
+    
     top: 20%;
     display: block;
     color: black;
@@ -918,7 +923,7 @@
 
 .white-section {
     background-color: white;
-    height: 140vh; /* Adjust the height as needed */
+    height: 120vh; /* Adjust the height as needed */
     padding: 20px; /* Add padding to space the content from the edges */
     display: flex;
     flex-direction: column;
@@ -1316,8 +1321,6 @@ function resetSeeMoreButtonPosition() {
 
 //===================================TEXXT IN YELLOW WALA SECTION KI ANIMATION THING==========================================
 
-if (window.innerWidth > 1024 || window.innerWidth > 720 ) {
-
 const yellowSecText = document.querySelector('.YellowSecText');
 let isYellowSecTextVisible = false; // Flag to track visibility
 
@@ -1334,10 +1337,7 @@ function isInViewport(element) {
 
 // Function to show/hide the element based on visibility
 function toggleYellowSecTextVisibility() {
-   
-
     if (isInViewport(yellowSecText)) {
-        // Check if the element is in the viewport
         if (!isYellowSecTextVisible) {
             yellowSecText.style.opacity = '1';
             yellowSecText.style.transform = 'translateY(0)';
@@ -1345,7 +1345,6 @@ function toggleYellowSecTextVisibility() {
             isYellowSecTextVisible = true; // Update visibility flag
         }
     } else {
-        // Check if the element is out of the viewport
         if (isYellowSecTextVisible) {
             yellowSecText.style.opacity = '0';
             yellowSecText.style.transform = 'translateY(40px)';
@@ -1360,7 +1359,7 @@ toggleYellowSecTextVisibility();
 // Attach an event listener to the scroll event
 window.addEventListener('scroll', toggleYellowSecTextVisibility);
 
-}
+
 //======================================MORE ABOUT ME BUTTON KI ANIMATION THINGY LOL===============================================
 
 
