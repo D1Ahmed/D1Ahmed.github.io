@@ -61,7 +61,17 @@
 
 
         /* Styling for the navigation menu */
-        .nav {
+     
+        .nav .LogoName {
+            color: white;
+            margin-left: -20px;
+            font-size: 19px;
+        }
+        .yellow-dot {
+    color: yellow;
+}
+
+.nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,102 +83,128 @@
             color: white;
             margin-left: -20px;
             font-size: 19px;
-        }
-        .yellow-dot {
-    color: yellow;
-}
-
-        .nav .topRightContents {
-            list-style-type: none;
             display: flex;
-            margin: 0;
-            padding: 0;
-            margin-right: -50px;
-        }
-
-        .nav .topRightContents li {
-            margin-right: 20px;
-        }
-
-        .nav .topRightContents a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        /* Styling for the mobile menu icon */
-        .mobile-menu-icon {
-            display: none; /* Initially hidden on desktop */
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-            z-index: 2;
-        }
-
-        /* Styling for the mobile menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: -780px; /* Adjust the width of the mnu */
-            width: 50%; /* Adjust the width of the menu */
-            height: 100%;
-            background-color: yellow;
-            border-radius: 20px;
-            padding: 20px;
-            z-index: 1;
-            transition: right 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
         }
 
-        .mobile-menu.active {
-            right: 0;
+        .nav .LogoName .logo-text {
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
         }
 
-        .mobile-menu a {
+        .nav .LogoName .yellow-dot {
+            color: yellow;
+        }
+
+        
+
+        /* ... Your existing navigation menu styles ... */
+
+        .portfolio-container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .video-card {
+            margin: 20px;
+            width: 300px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .video-card video {
+            width: 100%;
+            height: auto;
+        }
+
+        .video-card-content {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: -100%; /* Start offscreen */
+           
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+            transition: top 0.5s ease-in-out;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+          
+        }
+
+        .slide-menu a {
+            position: relative;
             text-decoration: none;
             color: black;
             font-weight: bold;
-            font-size: 30px;
-            padding: 20px 50px; /* Add vertical padding to separate elements */
-            width: 100%; /* Ensure full width for each menu item */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 80px;
-        }
-
-        /* Your existing styles here */
-
-        ul {
-            list-style-type: none;
-            display: flex;
-            margin-top: -45px;
-            float: right;
-        }
-
-        ul a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 20px;
-            justify-content: space-between;
-            padding: 10px;
-            transition: letter-spacing 0.3s ease; /* Add letter-spacing transition */
-        }
-
-        /* Apply letter-spacing animation on hover */
-        ul a:hover {
-            letter-spacing: 2px; /* Adjust the desired letter-spacing on hover */
+            font-size: 24px;
+            padding: 20px;
+            font-size: 200%;
+            left: 20%;
+            top: 20%;
+            transition: letter-spacing 0.3s ease;
             
+            width: 5%;
         }
-        .mobile-menu ul {
-            flex-direction: column;
+
+        .slide-menu a:hover {
+            letter-spacing: 5px
         }
+
+        /* Style the active link and create a line using ::after pseudo-element */
+.slide-menu a.active {
+    position: relative; /* Add relative positioning to the link */
+}
+
+
+.slide-menu a.active::after {
+    content: ""; /* Add an empty content property */
+    position: absolute; /* Position the line absolutely */
+    bottom: 40%; /* Align it to the bottom of the link */
+    left: 5%; /* Align it to the left of the link */
+    width: 150%; /* Make it cover the entire link width */
+    height: 4px; /* Set the height of the line */
+    background-color: black; /* Color of the line */
+    border-radius: 20px;
+}
+
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+       
+
+       
+    
+
+        
+
+     
 
         /* CSS for the video background */
         .videoProject {
@@ -1013,27 +1049,15 @@
 <div class="MainContent">
 
     <div class="nav">
-        <a href="#home">
+        <a href="index.html">
             <h2 class="LogoName" id="logo">
                 <span class="background"></span> <!-- Add this element for background color -->
                 d<span class="yellow-dot">.</span>A
             </h2>
+         
         </a>
-        <div class="mobile-menu-icon" id="mobileMenuIcon">&#9776;</div>
-        <div class="mobile-menu" id="mobileMenu">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Portfolio</a></li>
-            </ul>
-        </div>
-        <ul class="topRightContents">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Portfolio</a></li>
-        </ul>
+       
+      
     </div>
 
     <!-- Projects 1 -->
@@ -1109,6 +1133,15 @@
         <div class="arrow right" id="rightArrow" onclick="showNextProject()">&#8250;</div>
     </div>
 </div>
+
+<div class="slide-menu" id="slideMenu">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="portfolio.html">Portfolio</a>
+</div>
+
+<div class="menu-button" id="menuButton">&#9776;</div>
  
 
 <!--==========================================Yellow wala section===========================================-->
@@ -1201,20 +1234,18 @@ updateLogoTextColor();
 
 /*========================================Mobile menu===================================*/
 
-      // JavaScript to toggle the mobile menu
-const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-const mobileMenu = document.getElementById('mobileMenu');
 
-mobileMenuIcon.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-});
 
-const videos = document.querySelectorAll('.videoProject'); // Select all video elements
-const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
+
+
+
+
 
 
  /* ==========================ARROWS MOVEMENT THING ==================================*/
 
+ const videos = document.querySelectorAll('.videoProject'); // Select all video elements
+const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
 // Check if the screen width is greater than 1024 pixels
 if (window.innerWidth > 1024 || window.innerWidth > 720 ) {
    
@@ -1537,6 +1568,32 @@ function resetButtonPosition() {
     contactButton.style.transition = 'transform 0.2s ease';
     contactButton.style.transform = 'translate(0, 0)';
 }
+
+
+/*===========================Top slider ============================*/
+const slideMenu = document.getElementById('slideMenu');
+const hamburgerIcon = document.getElementById('hamburgerIcon');
+const menuButton = document.getElementById('menuButton');
+
+let isMenuOpen = false;
+
+menuButton.addEventListener('click', () => {
+    if (isMenuOpen) {
+        slideMenu.style.top = '-100%';
+    } else {
+        slideMenu.style.top = '0%';
+    }
+    isMenuOpen = !isMenuOpen;
+});
+
+hamburgerIcon.addEventListener('click', () => {
+    if (isMenuOpen) {
+        slideMenu.style.top = '-100%';
+    } else {
+        slideMenu.style.top = '0%';
+    }
+    isMenuOpen = !isMenuOpen;
+});
 
     </script>
 </body>
