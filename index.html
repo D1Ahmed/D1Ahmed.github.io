@@ -24,14 +24,31 @@
         }
 
         .LogoName {
-    color: white;
     font-size: 19px;
     position: fixed;
     top: 20px; /* Adjust the top position as needed */
     left: 50px; /* Adjust the left position as needed */
     cursor: pointer;
     z-index: 3; /* Ensure it's above other elements */
+    background-color: transparent; /* Set the initial background color to transparent */
+    transition: color 0.3s; /* Add a smooth color transition effect */
 }
+
+
+/* Add CSS rules to control text visibility based on background color */
+.nav {
+    background-color: black;
+}
+
+.nav .LogoName .logo-text.white {
+    display: none;
+}
+
+/* Add CSS rules for the yellow dot */
+.yellow-dot {
+    fill: yellow;
+}
+
 
         .MainContent{
             background-color: black;
@@ -94,7 +111,7 @@
             display: none;
             position: fixed;
             top: 0;
-            right: -780px; /* Adjust the width of the menu */
+            right: -780px; /* Adjust the width of the mnu */
             width: 50%; /* Adjust the width of the menu */
             height: 100%;
             background-color: yellow;
@@ -873,7 +890,7 @@
     color: black;
     padding: 10px 20px;
     font-size: 15px;
-    border-radius: 40px;
+   
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     left: 31%;
@@ -913,7 +930,7 @@
 }
 
 
-/*Yllow section ki text ki  animation ka CSS*/
+/*Yellow section ki text ki  animation ka CSS*/
 
 
 .yellow-section {
@@ -945,8 +962,8 @@
     flex-direction: column; /* Arrange services vertically */
     align-items: center; /* Center services horizontally */
     top: 8%;
-    left: 10px;
-    grid-gap:50px;
+    left: 7px;
+    grid-gap:10%;
     
     
 }
@@ -956,7 +973,7 @@
     text-align: center; /* Center the text in each service box */
     margin: 1px 0; /* Reduce the margin between each service box (top and bottom) */
     padding: 1px 1px;
-    font-size: 17px;
+    font-size: 110%;
     
     
 }
@@ -992,12 +1009,15 @@
 
     </style>
 </head>
-<body>
+<body style="background-color: #000;">
 <div class="MainContent">
 
     <div class="nav">
         <a href="#home">
-            <h2 class="LogoName" id="logo">d<span class="yellow-dot">.</span>A</h2>
+            <h2 class="LogoName" id="logo">
+                <span class="background"></span> <!-- Add this element for background color -->
+                d<span class="yellow-dot">.</span>A
+            </h2>
         </a>
         <div class="mobile-menu-icon" id="mobileMenuIcon">&#9776;</div>
         <div class="mobile-menu" id="mobileMenu">
@@ -1132,6 +1152,8 @@
 </div>
 
 
+
+<!--================================JAVAVAVA SCRIPPTT HERREEEE==================================-->
     <script>
 
 document.querySelector('.LogoName').addEventListener('click', function () {
@@ -1143,6 +1165,39 @@ document.querySelector('.LogoName').addEventListener('click', function () {
 
 
 
+// Function to calculate the contrast ratio between two colors
+function getContrastRatio(hexColor1, hexColor2) {
+    const rgbColor1 = parseInt(hexColor1.substring(1), 16);
+    const rgbColor2 = parseInt(hexColor2.substring(1), 16);
+    const brightness1 = ((rgbColor1 >> 16) & 255) * 0.299 + ((rgbColor1 >> 8) & 255) * 0.587 + (rgbColor1 & 255) * 0.114;
+    const brightness2 = ((rgbColor2 >> 16) & 255) * 0.299 + ((rgbColor2 >> 8) & 255) * 0.587 + (rgbColor2 & 255) * 0.114;
+    const contrast = (Math.max(brightness1, brightness2) + 0.05) / (Math.min(brightness1, brightness2) + 0.05);
+    return contrast;
+}
+
+// Function to update the logo text color based on the navigation bar background color
+function updateLogoTextColor() {
+    const nav = document.querySelector('.nav');
+    const logo = document.querySelector('.LogoName');
+
+    const navBackgroundColor = getComputedStyle(nav).backgroundColor;
+    const logoBackgroundColor = getComputedStyle(logo).backgroundColor;
+
+    const contrastRatio = getContrastRatio(navBackgroundColor, logoBackgroundColor);
+
+    if (contrastRatio < 4.5) {
+        // If contrast ratio is less than 4.5, set the logo text color to white
+        logo.classList.remove('black');
+        logo.classList.add('white');
+    } else {
+        // Otherwise, set the logo text color to black
+        logo.classList.remove('white');
+        logo.classList.add('black');
+    }
+}
+
+// Call the function initially and on page load to set the initial text color
+updateLogoTextColor();
 
 /*========================================Mobile menu===================================*/
 
