@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Your Name</title>
+    <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+    <style>
+        /* Reset default styles */
+        /* Your existing CSS styles here */
+
+        body {
+            background-color: black;
+            font-family: 'Alata', sans-serif;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: black;    
+        }
+
+        .nav .LogoName {
+            color: white;
+            margin-left: -20px;
+            font-size: 19px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav .LogoName .logo-text {
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
+        }
+
+        .nav .LogoName .yellow-dot {
+            color: yellow;
+        }
+
+        /* ... Your existing navigation menu styles ... */
+
+        .portfolio-container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .video-card {
+            margin: 20px;
+            width: 300px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .video-card video {
+            width: 100%;
+            height: auto;
+        }
+
+        .video-card-content {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: -100%; /* Start offscreen */
+           
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+            transition: top 0.5s ease-in-out;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+          
+        }
+
+        .slide-menu a {
+            position: relative;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 20px;
+            font-size: 250%;
+            left: 20%;
+            top: 20%;
+            transition: letter-spacing 0.3s ease;
+            
+            width: 5%;
+        }
+
+        .slide-menu a:hover {
+            letter-spacing: 5px
+        }
+
+        .slide-menu a.active {
+    position: relative; /* Add relative positioning to the link */
+}
+
+
+.slide-menu a.active::after {
+    content: ""; /* Add an empty content property */
+    position: absolute; /* Position the line absolutely */
+    bottom: 39%; /* Align it to the bottom of the link */
+    left: 15%; /* Align it to the left of the link */
+    width: 100%; /* Make it cover the entire link width */
+    height: 4px; /* Set the height of the line */
+    background-color: black; /* Color of the line */
+    border-radius: 20px;
+}
+
+
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">
+            <h2 class="LogoName" id="logo">
+                <span class="background"></span>
+                d<span class="yellow-dot">.</span>A
+            </h2>
+        </a>
+        <div class="hamburger-icon" id="hamburgerIcon">&#9776;</div>
+    </div>
+
+    
+
+        <div class="slide-menu" id="slideMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="portfolio.html">Portfolio</a>
+        </div>
+
+        <div class="menu-button" id="menuButton">&#9776;</div>
+
+
+  
+
+    <h1 style="color: white;">About</h1>
+
+    <script>
+const slideMenu = document.getElementById('slideMenu');
+const hamburgerIcon = document.getElementById('hamburgerIcon');
+const menuButton = document.getElementById('menuButton');
+
+let isMenuOpen = false;
+
+menuButton.addEventListener('click', () => {
+    if (isMenuOpen) {
+        slideMenu.style.top = '-100%';
+    } else {
+        slideMenu.style.top = '0%';
+    }
+    isMenuOpen = !isMenuOpen;
+});
+
+hamburgerIcon.addEventListener('click', () => {
+    if (isMenuOpen) {
+        slideMenu.style.top = '-100%';
+    } else {
+        slideMenu.style.top = '0%';
+    }
+    isMenuOpen = !isMenuOpen;
+});
+
+ 
+    </script>
+</body>
+</html>

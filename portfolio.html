@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Your Name</title>
+    <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+    <style>
+        /* Reset default styles */
+        /* Your existing CSS styles here */
+
+        body {
+            background-color: black;
+            font-family: 'Alata', sans-serif;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: black;    
+        }
+
+        .nav .LogoName {
+            color: white;
+            margin-left: -20px;
+            font-size: 19px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav .LogoName .logo-text {
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
+        }
+
+        .nav .LogoName .yellow-dot {
+            color: yellow;
+        }
+
+        /* ... Your existing navigation menu styles ... */
+
+        .portfolio-container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .video-card {
+    margin: 20px;
+    width: 30%;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: rgb(255, 255, 255);
+    overflow: hidden;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Add transform and filter transitions */
+}
+
+.video-card video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    filter: grayscale(0%); /* Initially set the video to grayscale */
+}
+
+.video-card:hover {
+    filter: grayscale(0%); /* Remove grayscale filter on hover */  
+    transform: scale(1.05); /* Scale up the card on hover */
+  
+}
+
+
+        .video-card-content {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 20px;
+            color: yellow;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: -100%; /* Start offscreen */
+           
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+            transition: top 0.5s ease-in-out;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+          
+        }
+
+        .slide-menu a {
+            position: relative;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 20px;
+            font-size: 250%;
+            left: 20%;
+            top: 20%;
+            transition: letter-spacing 0.3s ease;
+            
+            width: 5%;
+        }
+
+        .slide-menu a:hover {
+            letter-spacing: 5px
+        }
+    
+
+
+/* Style the active link and create a line using ::after pseudo-element */
+.slide-menu a.active {
+    position: relative; /* Add relative positioning to the link */
+}
+
+
+.slide-menu a.active::after {
+    content: ""; /* Add an empty content property */
+    position: absolute; /* Position the line absolutely */
+    bottom: 40%; /* Align it to the bottom of the link */
+    left: 5%; /* Align it to the left of the link */
+    width: 150%; /* Make it cover the entire link width */
+    height: 4px; /* Set the height of the line */
+    background-color: black; /* Color of the line */
+    border-radius: 20px;
+}
+
+
+
+
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">
+            <h2 class="LogoName" id="logo">
+                <span class="background"></span>
+                d<span class="yellow-dot">.</span>A
+            </h2>
+        </a>
+        <div class="hamburger-icon" id="hamburgerIcon">&#9776;</div>
+    </div>
+
+    <div class="portfolio-container">
+        <!-- Video Card 1 -->
+        <div class="video-card">
+            <video autoplay loop muted playsinline>
+                <source src="videos\(Life is a Game)Final 3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+                <h2 class="video-title">Life is a Game</h2>
+                <p class="video-description">Made this project from a clients YouTube channel. In these videos he covers his wieghtloss journey</p>
+            </div>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="video-card">
+            <video autoplay loop muted playsinline>
+                <source src="videos\4k Final 2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+                <h2 class="video-title">Video Proj</h2>
+                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+            </div>
+        </div>
+
+          <!-- Video Card 1 -->
+          <div class="video-card">
+            <video autoplay loop muted playsinline>
+                <source src="videos\Lessons I Learned After 30 Days Of Working Out_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+                <h2 class="video-title">After 30 days of Workout</h2>
+                <p class="video-description">Description of your first video project. You can edit this text as needed.</p>
+            </div>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="video-card">
+            <video autoplay loop muted playsinline>
+                <source src="videos\YouTube Automation.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+                <h2 class="video-title">YouTube Automation</h2>
+                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+            </div>
+        </div>
+
+          <!-- Video Card 1 -->
+          <div class="video-card">
+            <video autoplay loop muted playsinline>
+                <source src="videos\Sneaky Eater.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+                <h2 class="video-title">Video Project 1</h2>
+                <p class="video-description">Description of your first video project. You can edit this text as needed.</p>
+            </div>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="video-card">
+            <video autoplay loop muted playsinline>
+                <source src="videos\FINAL 1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+                <h2 class="video-title">Video Project 2</h2>
+                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+            </div>
+        </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <video autoplay loop muted playsinline>
+                    <source src="videos\Blueberries.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Video Project 2</h2>
+                    <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                </div>
+            </div>
+
+                <!-- Video Card 2 -->
+        <div class="video-card">
+            <video autoplay loop muted playsinline>
+                <source src="videos\Metal Roofing.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+                <h2 class="video-title">Video Project 2</h2>
+                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+            </div>
+        </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <video autoplay loop muted playsinline>
+                    <source src="videos\My Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Video Project 2</h2>
+                    <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                </div>
+            </div>
+
+                <!-- Video Card 2 -->
+                <div class="video-card">
+                    <video autoplay loop muted playsinline>
+                        <source src="videos\Third Done.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-card-content">
+                        <h2 class="video-title">Video Project 2</h2>
+                        <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                    </div>
+                </div>
+
+                    <!-- Video Card 2 -->
+            <div class="video-card">
+                <video autoplay loop muted playsinline>
+                    <source src="videos\Scott Final 5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Video Project 2</h2>
+                    <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                </div>
+            </div>
+
+                <!-- Video Card 2 -->
+                <div class="video-card">
+                    <video autoplay loop muted playsinline>
+                        <source src="videos\final 4.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-card-content">
+                        <h2 class="video-title">Video Project 2</h2>
+                        <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                    </div>
+                </div>
+    
+
+
+        <div class="slide-menu" id="slideMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="portfolio.html" class="active">Portfolio</a>
+        </div>
+
+        <div class="menu-button" id="menuButton">&#9776;</div>
+
+
+        <!-- Add more video cards as needed -->
+    </div>
+
+    <script>
+const slideMenu = document.getElementById('slideMenu');
+const hamburgerIcon = document.getElementById('hamburgerIcon');
+const menuButton = document.getElementById('menuButton');
+
+let isMenuOpen = false;
+
+menuButton.addEventListener('click', () => {
+    if (isMenuOpen) {
+        slideMenu.style.top = '-100%';
+    } else {
+        slideMenu.style.top = '0%';
+    }
+    isMenuOpen = !isMenuOpen;
+});
+
+hamburgerIcon.addEventListener('click', () => {
+    if (isMenuOpen) {
+        slideMenu.style.top = '-100%';
+    } else {
+        slideMenu.style.top = '0%';
+    }
+    isMenuOpen = !isMenuOpen;
+});
+
+ 
+    </script>
+</body>
+</html>
