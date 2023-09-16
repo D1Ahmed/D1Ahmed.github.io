@@ -12,6 +12,7 @@
         body {
             background-color: black;
             font-family: 'Alata', sans-serif;
+            text-decoration: none;
         }
 
         .nav {
@@ -28,65 +29,220 @@
             font-size: 19px;
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
 
         .nav .LogoName .logo-text {
             font-weight: bold;
             font-size: 24px;
             color: white;
+            text-decoration: none;
         }
 
         .nav .LogoName .yellow-dot {
             color: yellow;
+            text-decoration:none ;
         }
 
         /* ... Your existing navigation menu styles ... */
 
-        .portfolio-container {
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
+ 
         .video-card {
-    margin: 20px;
     width: 30%;
-    background-color: #333;
-    border-radius: 10px;
+    height: 300px;
     box-shadow: rgb(255, 255, 255);
     overflow: hidden;
-    transition: transform 0.3s ease, filter 0.3s ease; /* Add transform and filter transitions */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-right: 2%; /* Add a margin to create a gap between video cards */
 }
+
 
 .video-card video {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    filter: grayscale(0%); /* Initially set the video to grayscale */
+    filter: grayscale(0%);
+    z-index: 1; /* Set a higher z-index to make the video appear on top */
 }
-
 .video-card:hover {
     filter: grayscale(0%); /* Remove grayscale filter on hover */  
     transform: scale(1.05); /* Scale up the card on hover */
   
 }
 
+.video-card-content {
+    position: relative;
+    top: -100%;
+   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left  ;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    opacity: 1; /*make it 0 for that animation thing*/
+    transition: opacity 0.3s ease;
+    z-index: 2; /* Set a lower z-index to make the content overlay the video */
+   
+}
 
-        .video-card-content {
-            padding: 15px;
-        }
+.video-card:hover .video-card-content {
+    opacity: 0;
+}
 
-        .video-title {
-            font-size: 20px;
-            color: yellow;
-            margin-bottom: 10px;
-        }
+.video-title {
+    position: relative;
+    font-size: 20px;
+    color: yellow;
+    margin-bottom: 10px;
+    left: 1%;
+    top: 26%;
+}
 
-        .video-description {
-            font-size: 16px;
-            color: #ccc;
-        }
+.video-description {
+    position: relative;
+    font-size: 16px;
+    color: #ccc;
+    left: 1%;
+    top: 25%;
+}
+
+.video-section {
+    /* top: 30%; Remove this line */
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Change to space-evenly */
+    align-items: flex-start;
+    width: 100%;
+}
+
+.video-section .video-card {
+    position: relative;
+    width: calc(30% - 20px); /* Calculate width with margin included */
+    margin-bottom: 20px; /* Add spacing at the bottom of each video */
+}
+
+.section-wrapper {
+    top: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.section-title {
+    /* left: 45%; Remove this line */
+    color: white;
+    font-size: 40px;
+   
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.video-card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    font-size: 18px;
+}
+
+
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+        position: relative;
+        top: 10%;
+        background-color: #333;
+        margin: auto;
+        padding: 20px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto; /* Add a scrollbar for overflowing content */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+
+    .modal-video-container video {
+        position: relative;
+    width: 50%; /* Set the video width to 100% */
+    height: auto; /* Allow the video to scale proportionally */
+    border-radius: 10px;
+    left: 25%;
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-info {
+    position: relative;
+    width: 100%;
+    height: auto; /* Adjust height to content */
+    color: white;
+    text-align: center; /* Center the text horizontally */
+    padding: 20px; /* Add some padding for better readability */
+    background-color: transparent; /* Use a transparent background */
+    font-size: 20px;
+}
+#modalTitle {
+    position: relative;
+    top: auto;
+    font-size: 24px;
+    color: yellow; /* Set a different color for the title */
+    margin-bottom: 10px;
+ 
+}
+
+#modalDescription {
+    position: relative;
+    font-size: 18px;
+    color: #ccc; /* Set a different color for the description */
+    background-color: #333; /* Adjust the background color for better contrast */
+    padding: 10px; /* Add padding to improve readability */
+}
+
 
         .slide-menu {
             position: fixed;
@@ -94,7 +250,7 @@
            
             width: 100%;
             height: 100%;
-            background-color: yellow;
+            background-color: rgb(191, 191, 0);
             transition: top 0.5s ease-in-out;
             z-index: 2;
             display: flex;
@@ -145,13 +301,325 @@
 
         .menu-button {
             position: absolute;
-            top: 20px;
+            top: 40px;
             right: 20px;
             font-size: 24px;
             color: white;
             cursor: pointer;
             z-index: 3;
         }
+
+
+        @media screen and (max-width: 720px) {
+
+            body {
+            background-color: black;
+            font-family: 'Alata', sans-serif;
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: black;    
+        }
+
+        .nav .LogoName {
+            color: white;
+            margin-left: -20px;
+            font-size: 19px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav .LogoName .logo-text {
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav .LogoName .yellow-dot {
+            color: yellow;
+            text-decoration:none ;
+        }
+
+        /* ... Your existing navigation menu styles ... */
+
+ 
+        .video-card {
+    width: 30%;
+    height: 300px;
+    box-shadow: rgb(255, 255, 255);
+    overflow: hidden;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-right: 2%; /* Add a margin to create a gap between video cards */
+}
+
+
+.video-card video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    filter: grayscale(0%);
+    z-index: 1; /* Set a higher z-index to make the video appear on top */
+}
+.video-card:hover {
+    filter: grayscale(0%); /* Remove grayscale filter on hover */  
+    transform: scale(1.05); /* Scale up the card on hover */
+  
+}
+
+.video-card-content {
+    position: relative;
+    top: -100%;
+   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left  ;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    opacity: 1; /*make it 0 for that animation thing*/
+    transition: opacity 0.3s ease;
+    z-index: 2; /* Set a lower z-index to make the content overlay the video */
+   
+}
+
+.video-card:hover .video-card-content {
+    opacity: 0;
+}
+
+.video-title {
+    position: relative;
+    font-size: 20px;
+    color: yellow;
+    margin-bottom: 10px;
+    left: 1%;
+    top: 26%;
+}
+
+.video-description {
+    position: relative;
+    font-size: 16px;
+    color: #ccc;
+    left: 1%;
+    top: 25%;
+}
+
+.video-section {
+    /* top: 30%; Remove this line */
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Change to space-evenly */
+    align-items: flex-start;
+    width: 100%;
+}
+
+.video-section .video-card {
+    position: relative;
+    width: calc(30% - 20px); /* Calculate width with margin included */
+    margin-bottom: 20px; /* Add spacing at the bottom of each video */
+}
+
+.section-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-section .video-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+.section-title {
+    /* left: 45%; Remove this line */
+    color: white;
+    font-size: 40px;
+   
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.video-card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    font-size: 18px;
+}
+
+
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+        position: relative;
+        top: 20%;
+        background-color: #0d0d0d;
+        margin: auto;
+        padding: 20px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto; /* Add a scrollbar for overflowing content */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+
+    .modal-video-container video {
+        position: relative;
+    width: 80%; /* Set the video width to 100% */
+    height: auto; /* Allow the video to scale proportionally */
+    border-radius: 10px;
+    left: 10%;
+    top: 40%;
+    
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-info {
+   
+    position: relative;
+    width: 100%;
+    height: auto; /* Adjust height to content */
+    color: white;
+    text-align: center; /* Center the text horizontally */
+    padding: 20px; /* Add some padding for better readability */
+   
+    font-size: 20px;
+}
+#modalTitle {
+    position: relative;
+    top: auto;
+    font-size: 24px;
+    color: yellow; /* Set a different color for the title */
+    margin-bottom: 10px;
+ 
+}
+
+#modalDescription {
+    position: relative;
+    font-size: 18px;
+    color: #ccc; /* Set a different color for the description */
+    background-color: #0d0d0d; /* Adjust the background color for better contrast */
+     /* Add padding to improve readability */
+}
+
+
+        .slide-menu {
+            position: fixed;
+            top: -100%; /* Start offscreen */
+           
+            width: 100%;
+            height: 100%;
+            background-color: rgb(191, 191, 0);
+            transition: top 0.5s ease-in-out;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+          
+        }
+
+        .slide-menu a {
+            position: relative;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 20px;
+            font-size: 250%;
+            left: 20%;
+            top: 20%;
+            transition: letter-spacing 0.3s ease;
+            
+            width: 5%;
+        }
+
+        .slide-menu a:hover {
+            letter-spacing: 5px
+        }
+    
+
+
+/* Style the active link and create a line using ::after pseudo-element */
+.slide-menu a.active {
+    position: relative; /* Add relative positioning to the link */
+}
+
+
+.slide-menu a.active::after {
+    content: ""; /* Add an empty content property */
+    position: absolute; /* Position the line absolutely */
+    bottom: 40%; /* Align it to the bottom of the link */
+    left: 5%; /* Align it to the left of the link */
+    width: 150%; /* Make it cover the entire link width */
+    height: 4px; /* Set the height of the line */
+    background-color: black; /* Color of the line */
+    border-radius: 20px;
+}
+
+
+
+
+        .menu-button {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+}
+
+        
     </style>
 </head>
 <body>
@@ -165,152 +633,290 @@
         <div class="hamburger-icon" id="hamburgerIcon">&#9776;</div>
     </div>
 
-    <div class="portfolio-container">
-        <!-- Video Card 1 -->
-        <div class="video-card">
-            <video autoplay loop muted playsinline>
-                <source src="videos\(Life is a Game)Final 3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-                <h2 class="video-title">Life is a Game</h2>
-                <p class="video-description">Made this project from a clients YouTube channel. In these videos he covers his wieghtloss journey</p>
-            </div>
-        </div>
 
-        <!-- Video Card 2 -->
-        <div class="video-card">
-            <video autoplay loop muted playsinline>
-                <source src="videos\4k Final 2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-                <h2 class="video-title">Video Proj</h2>
-                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
-            </div>
-        </div>
 
-          <!-- Video Card 1 -->
-          <div class="video-card">
-            <video autoplay loop muted playsinline>
-                <source src="videos\Lessons I Learned After 30 Days Of Working Out_1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-                <h2 class="video-title">After 30 days of Workout</h2>
-                <p class="video-description">Description of your first video project. You can edit this text as needed.</p>
-            </div>
-        </div>
 
-        <!-- Video Card 2 -->
-        <div class="video-card">
-            <video autoplay loop muted playsinline>
-                <source src="videos\YouTube Automation.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-                <h2 class="video-title">YouTube Automation</h2>
-                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
-            </div>
-        </div>
+        <section class="video-section" id="documentaries">
+           
+            <h2 class="section-title">Documentary Style</h2>
+            <div class="section-wrapper">
+               
 
-          <!-- Video Card 1 -->
-          <div class="video-card">
-            <video autoplay loop muted playsinline>
-                <source src="videos\Sneaky Eater.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-                <h2 class="video-title">Video Project 1</h2>
-                <p class="video-description">Description of your first video project. You can edit this text as needed.</p>
-            </div>
-        </div>
-
-        <!-- Video Card 2 -->
-        <div class="video-card">
-            <video autoplay loop muted playsinline>
-                <source src="videos\FINAL 1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-                <h2 class="video-title">Video Project 2</h2>
-                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
-            </div>
-        </div>
-
-            <!-- Video Card 2 -->
-            <div class="video-card">
+            <div class="video-card" data-title="Documentary Amouranth" data-description="It was my first-ever documentary project for a client. Needed to do a lot of research for this video." data-full-description="Lets see if it works!.">
                 <video autoplay loop muted playsinline>
-                    <source src="videos\Blueberries.mp4" type="video/mp4">
+                    <source src="Documentary Amouranth.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div class="video-card-content">
-                    <h2 class="video-title">Video Project 2</h2>
-                    <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                    <h2 class="video-title">Documentary Amouranth</h2>
+                    <p class="video-description">It was my first-ever documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
                 </div>
             </div>
-
-                <!-- Video Card 2 -->
-        <div class="video-card">
-            <video autoplay loop muted playsinline>
-                <source src="videos\Metal Roofing.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-                <h2 class="video-title">Video Project 2</h2>
-                <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
-            </div>
-        </div>
-
-            <!-- Video Card 2 -->
-            <div class="video-card">
+               
+            
+            
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
                 <video autoplay loop muted playsinline>
-                    <source src="videos\My Video.mp4" type="video/mp4">
+                    <source src="Sample.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div class="video-card-content">
-                    <h2 class="video-title">Video Project 2</h2>
-                    <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
                 </div>
             </div>
 
-                <!-- Video Card 2 -->
-                <div class="video-card">
-                    <video autoplay loop muted playsinline>
-                        <source src="videos\Third Done.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-card-content">
-                        <h2 class="video-title">Video Project 2</h2>
-                        <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
-                    </div>
-                </div>
-
-                    <!-- Video Card 2 -->
-            <div class="video-card">
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Imam Ghadzi" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
                 <video autoplay loop muted playsinline>
-                    <source src="videos\Scott Final 5.mp4" type="video/mp4">
+                    <source src="Project Videos\The Dark Rise Of Iman Gadzhi_ The New Age Fake Guru.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div class="video-card-content">
-                    <h2 class="video-title">Video Project 2</h2>
-                    <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
+                    <h2 class="video-title">Documentary Imam Ghadzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+            
+               
+            
+        </section>
+
+
+
+        <section class="video-section" id="Ai">
+           
+            <h2 class="section-title">Ai Niche</h2>
+            <div class="section-wrapper">
+               
+
+            <div class="video-card" data-title="Documentary Amouranth" data-description="It was my first-ever documentary project for a client. Needed to do a lot of research for this video." data-full-description="Lets see if it works!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Documentary Amouranth.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Amouranth</h2>
+                    <p class="video-description">It was my first-ever documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+               
+            
+            
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
                 </div>
             </div>
 
-                <!-- Video Card 2 -->
-                <div class="video-card">
-                    <video autoplay loop muted playsinline>
-                        <source src="videos\final 4.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-card-content">
-                        <h2 class="video-title">Video Project 2</h2>
-                        <p class="video-description">Description of your second video project. You can edit this text as needed.</p>
-                    </div>
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
                 </div>
-    
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+            
+               
+            
+        </section>
 
+
+
+        
+        <section class="video-section" id="WorkoutVlogs">
+           
+            <h2 class="section-title">Workout Vlogs</h2>
+            <div class="section-wrapper">
+               
+
+            <div class="video-card" data-title="Documentary Amouranth" data-description="It was my first-ever documentary project for a client. Needed to do a lot of research for this video." data-full-description="Lets see if it works!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Documentary Amouranth.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Amouranth</h2>
+                    <p class="video-description">It was my first-ever documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+               
+            
+            
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+              
+        </section>
+
+
+        <section class="video-section" id="FacebookAds">
+           
+            <h2 class="section-title">FacebookAds</h2>
+            <div class="section-wrapper">
+               
+
+            <div class="video-card" data-title="Documentary Amouranth" data-description="It was my first-ever documentary project for a client. Needed to do a lot of research for this video." data-full-description="Lets see if it works!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Documentary Amouranth.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Amouranth</h2>
+                    <p class="video-description">It was my first-ever documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+               
+            
+            
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+              
+        </section>
+
+        <section class="video-section" id="TikTokAds">
+           
+            <h2 class="section-title">TikTok Ads (Ads for Turbo Dog Media)</h2>
+            <div class="section-wrapper">
+               
+
+            <div class="video-card" data-title="Documentary Amouranth" data-description="It was my first-ever documentary project for a client. Needed to do a lot of research for this video." data-full-description="Lets see if it works!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Documentary Amouranth.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Amouranth</h2>
+                    <p class="video-description">It was my first-ever documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+               
+            
+            
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+
+               <!-- Video Card 1 -->
+               <div class="video-card" data-title="Documentary Ponzi Scheme" data-description="It was my second documentary project for a client. Needed to do a lot of research for this video." data-full-description="Hope it works too!.">
+                <video autoplay loop muted playsinline>
+                    <source src="Sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-card-content">
+                    <h2 class="video-title">Documentary Ponzi</h2>
+                    <p class="video-description">It was my second documentary project for a client. Needed to do a lot of research for this video. </p>
+                </div>
+                <div class="overlay">
+                    <p class="overlay-text">Click to view full project information</p>
+                </div>
+            </div>
+              
+        </section>
+
+        
 
         <div class="slide-menu" id="slideMenu">
             <a href="index.html">Home</a>
@@ -322,10 +928,35 @@
         <div class="menu-button" id="menuButton">&#9776;</div>
 
 
-        <!-- Add more video cards as needed -->
+   
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="modal-video-container">
+                <video id="modalVideo" controls>
+                
+                </video>
+            </div>
+            <!-- Separate title and description elements for the modal -->
+            <div class="modal-info">
+                <h2 id="modalTitle">Modal Video Title</h2>
+                <p id="modalDescription">Modal Video description goes here.</p>
+                <p id="modalFullDescription"></p>
+            </div>
+        </div>
     </div>
 
+
+
+
+
+
     <script>
+
+
+
 const slideMenu = document.getElementById('slideMenu');
 const hamburgerIcon = document.getElementById('hamburgerIcon');
 const menuButton = document.getElementById('menuButton');
@@ -350,7 +981,96 @@ hamburgerIcon.addEventListener('click', () => {
     isMenuOpen = !isMenuOpen;
 });
 
+
+
+const videoCards = document.querySelectorAll('.video-card');
+const modalVideo = document.getElementById('modalVideo');
+const modalTitle = document.getElementById('modalTitle');
+const modalDescription = document.getElementById('modalDescription');
+
+videoCards.forEach((card) => {
+    card.addEventListener('click', () => {
+        const videoSrc = card.querySelector('video source').getAttribute('src');
+        const title = card.getAttribute('data-title');
+        const description = card.getAttribute('data-description');
+
+        modalVideo.src = videoSrc;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        videoModal.style.display = 'block';
+    });
+});
+        // Close modal
+        const closeModal = document.getElementById('closeModal');
+        closeModal.addEventListener('click', () => {
+            modalVideo.pause();
+            videoModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === videoModal) {
+                modalVideo.pause();
+                videoModal.style.display = 'none';
+            }
+        });
+
  
+
+
+
+
+
+
+const modalFullDescription = document.getElementById('modalFullDescription'); // Add this line
+
+videoCards.forEach((card) => {
+    card.addEventListener('click', () => {
+        const videoSrc = card.querySelector('video source').getAttribute('src');
+        const title = card.getAttribute('data-title');
+        const description = card.getAttribute('data-description');
+        const fullDescription = card.getAttribute('data-full-description'); // Add this line
+
+        modalVideo.src = videoSrc;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        modalFullDescription.textContent = fullDescription; // Add this line
+        videoModal.style.display = 'block';
+    });
+});
+
+
+
+
+function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Video is in the viewport, play it
+                    entry.target.querySelector('video').play();
+                } else {
+                    // Video is not in the viewport, pause it
+                    entry.target.querySelector('video').pause();
+                }
+            });
+        }
+
+        // Create an Intersection Observer
+        const videoObserver = new IntersectionObserver(handleIntersection, {
+            root: null, // Use the viewport as the root
+            threshold: 0.5, // When at least 50% of the video is in the viewport
+        });
+
+        // Add each video card to the observer
+        
+        videoCards.forEach(videoCard => {
+            videoObserver.observe(videoCard);
+        });
+        
     </script>
+
+
+
+
 </body>
 </html>
+
+

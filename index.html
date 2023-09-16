@@ -188,7 +188,7 @@
 }
 
         .menu-button {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
             font-size: 24px;
@@ -333,15 +333,15 @@
     }
 
     #seeMoreButton {
-    background-color: grayscale(100%);
+    background-color: black;
     border: 2px solid grayscale(100%);
-    color: black;
+    color: white;
     padding: 10px 25px;
     font-size: 18px;
-    border-radius: 30px;
+   border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-    outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
+    outline: 2px solid yellow; /* Set the palevioletred outline for both default and hover states */
     position: absolute; /* Position the button absolutely */
     left: 45%; /* Center horizontally */
     top: 85%
@@ -504,12 +504,12 @@
     top: 50px;
 }
 #ContactButton {
-    background-color: grayscale(100%);
+    background-color: black;
     border: 2px solid grayscale(100%);
-    color: black;
+    color: white;
     padding: 10px 25px;
     font-size: 18px;
-    border-radius: 30px;
+    border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
@@ -923,10 +923,10 @@
         position: absolute;
     background-color: grayscale(100%);
     border: 2px solid grayscale(100%);
-    color: black;
+    color: white;
     padding: 10px 20px;
     font-size: 15px;
-   
+   border-radius: 1px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     left: 31%;
@@ -1025,10 +1025,10 @@
 #ContactButton{
     background-color: grayscale(100%);
     border: 2px solid grayscale(100%);
-    color: black;
+    color: white;
     padding: 10px 25px;
     font-size: 18px;
-    border-radius: 30px;
+    border-radius: 2px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
@@ -1046,7 +1046,9 @@
     </style>
 </head>
 <body style="background-color: #000;">
-<div class="MainContent">
+
+    
+    <div class="MainContent">
 
     <div class="nav">
         <a href="index.html">
@@ -1118,8 +1120,6 @@
     <div class="center-button" id="centerButton">
         <button id="seeMoreButton" onclick="window.location.href='portfolio.html'">See All Projects</button>
     </div>
-
-    
 
 
    
