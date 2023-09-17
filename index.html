@@ -22,27 +22,35 @@
             height: 100vh; /* Make the body cover 100% of the viewport height */
   
         }
+        ::-webkit-scrollbar {
+    width: 8px; /* You can adjust the width */
+    background-color: rgb(255, 0, 72); /* Background color of the scrollbar track */
+}
 
+/* Style of the thumb (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    background-color: aqua; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+}
+
+/* Style when hovering over the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color of the scrollbar thumb on hover */
+}
         .LogoName {
-    font-size: 19px;
     position: fixed;
-    top: 20px; /* Adjust the top position as needed */
-    left: 50px; /* Adjust the left position as needed */
-    cursor: pointer;
-    z-index: 3; /* Ensure it's above other elements */
-    background-color: transparent; /* Set the initial background color to transparent */
-    transition: color 0.3s; /* Add a smooth color transition effect */
+    top: 5%;
+    left: 3%;
+    transform: translate(-50%, -50%);
+    transition: color 0.5s; /* Smooth color transition */
+    color: white; /* Initial color for the MainContent section (white on black) */
+    z-index: 3;
+    font-size: 25px;
 }
-
-
 /* Add CSS rules to control text visibility based on background color */
-.nav {
-    background-color: black;
-}
 
-.nav .LogoName .logo-text.white {
-    display: none;
-}
+
+
 
 /* Add CSS rules for the yellow dot */
 .yellow-dot {
@@ -50,52 +58,25 @@
 }
 
 
-        .MainContent{
-            background-color: black;
-    
+.MainContent{
+    background-color: black;
     margin: 0;
     height: 100vh; /* Make the container cover 100% of the viewport height */
     overflow: hidden;
-        }
+    }
 
 
 
         /* Styling for the navigation menu */
      
-        .nav .LogoName {
-            color: white;
-            margin-left: -20px;
-            font-size: 19px;
-        }
-        .yellow-dot {
+
+
+    .yellow-dot {
     color: yellow;
 }
 
-.nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: black;    
-        }
 
-        .nav .LogoName {
-            color: white;
-            margin-left: -20px;
-            font-size: 19px;
-            display: flex;
-            align-items: center;
-        }
 
-        .nav .LogoName .logo-text {
-            font-weight: bold;
-            font-size: 24px;
-            color: white;
-        }
-
-        .nav .LogoName .yellow-dot {
-            color: yellow;
-        }
 
         
 
@@ -191,20 +172,13 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            font-size: 24px;
+            font-size: 30px;
             color: white;
             cursor: pointer;
             z-index: 3;
         }
 
        
-
-       
-    
-
-        
-
-     
 
         /* CSS for the video background */
         .videoProject {
@@ -358,9 +332,13 @@
     .yellow-section {
     background-color: yellow;
     height: 50vh; /* 50% of the viewport height */
-    /* Additional styling for the yellow section */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
+.yellow-section .LogoName {
+            color: blue; /* Change to your desired color */
+        }
 #moreAboutMeButton {
     position: relative;
     background-color: transparent;
@@ -370,7 +348,7 @@
     font-size: 18px;
     cursor: pointer;
     transition: transform 0.2s ease;
-    left: 45%;
+    left: 0%;
     top: 35%;
    
     
@@ -442,6 +420,9 @@
     
 }
 
+.white-section .LogoName {
+    color: black;
+}
 .offering h1 {
      text-align: center;
     position: relative;
@@ -833,7 +814,7 @@
             width: 90%;
             max-height: 100%;
             border-radius: 5px;
-            filter: grayscale(100%);
+            filter: grayscale(0%);
             transition: filter 0.3s ease, transform 0.3s ease;
             transform-origin: center center;
             z-index: 0;
@@ -908,10 +889,10 @@
         }
 
         .arrow:hover {
-            background-color: white;
-            color: black;
-            width: 80px;
-            height: 80px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 70px;
+            height: 70px;
         }
 
         .center-button {
@@ -1050,18 +1031,13 @@
     
     <div class="MainContent">
 
-    <div class="nav">
-        <a href="index.html">
-            <h2 class="LogoName" id="logo">
-                <span class="background"></span> <!-- Add this element for background color -->
-                d<span class="yellow-dot">.</span>A
-            </h2>
-         
-        </a>
-       
+            <a href="index.html">
+                <h2 class="LogoName" id="logo">
+                    <span class="background"></span> <!-- Add this element for background color -->
+                    d<span class="yellow-dot" id="dot">.</span>A
+                </h2>
+            </a>
       
-    </div>
-
     <!-- Projects 1 -->
     <div class="project" id="project1">
         <video autoplay loop muted playsinline class="videoProject">
@@ -1148,6 +1124,7 @@
 <!--==========================================Yellow wala section===========================================-->
     <div class="yellow-section">
 
+    
         <div class="YellowSecText slide-up">Hey, there! I'm a professional Video Editor on Upwork. <br> I master at adding Motion Graphics and Animations.</div>
         <button id="moreAboutMeButton">More About Me</button>
 
@@ -1198,40 +1175,54 @@ document.querySelector('.LogoName').addEventListener('click', function () {
 });
 
 
+window.addEventListener('scroll', () => {
+    const yellowSection = document.querySelector('.yellow-section');
+    const whiteSection = document.querySelector('.white-section');
+    const logoName = document.querySelector('.LogoName');
+    const yellowDot = document.getElementById('dot'); // Select the yellow dot element
+    const slideMenu = document.querySelector('.slide-menu'); // Select the slide menu element
 
-// Function to calculate the contrast ratio between two colors
-function getContrastRatio(hexColor1, hexColor2) {
-    const rgbColor1 = parseInt(hexColor1.substring(1), 16);
-    const rgbColor2 = parseInt(hexColor2.substring(1), 16);
-    const brightness1 = ((rgbColor1 >> 16) & 255) * 0.299 + ((rgbColor1 >> 8) & 255) * 0.587 + (rgbColor1 & 255) * 0.114;
-    const brightness2 = ((rgbColor2 >> 16) & 255) * 0.299 + ((rgbColor2 >> 8) & 255) * 0.587 + (rgbColor2 & 255) * 0.114;
-    const contrast = (Math.max(brightness1, brightness2) + 0.05) / (Math.min(brightness1, brightness2) + 0.05);
-    return contrast;
-}
+    const yellowSectionBottom = yellowSection.offsetTop + yellowSection.offsetHeight;
+    const whiteSectionTop = whiteSection.offsetTop;
 
-// Function to update the logo text color based on the navigation bar background color
-function updateLogoTextColor() {
-    const nav = document.querySelector('.nav');
-    const logo = document.querySelector('.LogoName');
-
-    const navBackgroundColor = getComputedStyle(nav).backgroundColor;
-    const logoBackgroundColor = getComputedStyle(logo).backgroundColor;
-
-    const contrastRatio = getContrastRatio(navBackgroundColor, logoBackgroundColor);
-
-    if (contrastRatio < 4.5) {
-        // If contrast ratio is less than 4.5, set the logo text color to white
-        logo.classList.remove('black');
-        logo.classList.add('white');
+    if (slideMenu.classList.contains('slide-menu-active')) {
+        logoName.style.color = 'black'; // Change LogoName to black in slide menu
+        yellowDot.style.color = 'yellow'; // Change yellow dot to yellow in slide menu
+    } else if (window.scrollY >= yellowSection.offsetTop && window.scrollY < whiteSectionTop) {
+        logoName.style.color = 'blue'; // Change LogoName to blue in yellow section
+        yellowDot.style.color = 'black'; // Change yellow dot to black in yellow section
+    } else if (window.scrollY >= whiteSectionTop) {
+        logoName.style.color = 'black'; // Change LogoName to black in white section
+        yellowDot.style.color = 'blue'; // Change yellow dot to blue in white section
     } else {
-        // Otherwise, set the logo text color to black
-        logo.classList.remove('white');
-        logo.classList.add('black');
+        logoName.style.color = 'white'; // Default color for LogoName in the main section
+        yellowDot.style.color = 'yellow'; // Default color for yellow dot in the main section
     }
-}
+});
 
-// Call the function initially and on page load to set the initial text color
-updateLogoTextColor();
+
+window.addEventListener('scroll', () => {
+    const yellowSection = document.querySelector('.yellow-section');
+    const whiteSection = document.querySelector('.white-section');
+    const menuButton = document.querySelector('.menu-button');
+
+    const yellowSectionBottom = yellowSection.offsetTop + yellowSection.offsetHeight;
+    const whiteSectionTop = whiteSection.offsetTop;
+
+    if (window.scrollY >= yellowSection.offsetTop && window.scrollY < whiteSectionTop) {
+        menuButton.style.color = 'blue'; // Change to yellow section color
+    } else if (window.scrollY >= whiteSectionTop) {
+        menuButton.style.color = 'black'; // Change to white section color
+    } else {
+        menuButton.style.color = 'white'; // Default color
+    }
+});
+
+
+
+
+
+
 
 /*========================================Mobile menu===================================*/
 
