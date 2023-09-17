@@ -918,7 +918,7 @@
     border: 2px solid black; /* Initial border color */
     color: black;
     padding: 10px 25px;
-    font-size: 10px;
+    font-size: 15px;
     cursor: pointer;
    
     text-align: center;
@@ -927,6 +927,12 @@
    
     
 }
+
+.mobile-disable-animation {
+        transition: color 0.3s ease; /* Keep color transition */
+    }
+
+
 
 .YellowSecText {
     position: relative;
@@ -1119,7 +1125,7 @@
 
     
         <div class="YellowSecText slide-up">Hey, there! I'm a professional Video Editor on Upwork. <br> I master at adding Motion Graphics and Animations.</div>
-        <button id="moreAboutMeButton">More About Me</button>
+        <button id="moreAboutMeButton" class="mobile-disable-animation">More About Me</button>
 
     </div>
 
@@ -1437,22 +1443,28 @@ window.addEventListener('scroll', toggleYellowSecTextVisibility);
 
 
 
-// JavaScript code for "More About Me" button animation
 const moreAboutMeButton = document.getElementById('moreAboutMeButton');
 let isHoveringMoreAboutMe = false;
 
 moreAboutMeButton.addEventListener('mouseenter', () => {
-    isHoveringMoreAboutMe = true;
-    moreAboutMeButton.style.transition = 'transform 0.2s ease';
+    // Check if the screen width is greater than 720px
+    if (window.innerWidth > 720) {
+        isHoveringMoreAboutMe = true;
+        moreAboutMeButton.style.transition = 'transform 0.2s ease';
+    }
 });
 
 moreAboutMeButton.addEventListener('mouseleave', () => {
-    isHoveringMoreAboutMe = false;
-    resetMoreAboutMeButtonPosition();
+    // Check if the screen width is greater than 720px
+    if (window.innerWidth > 720) {
+        isHoveringMoreAboutMe = false;
+        resetMoreAboutMeButtonPosition();
+    }
 });
 
 moreAboutMeButton.addEventListener('mousemove', (e) => {
-    if (isHoveringMoreAboutMe) {
+    // Check if the screen width is greater than 720px
+    if (window.innerWidth > 720 && isHoveringMoreAboutMe) {
         const buttonRect = moreAboutMeButton.getBoundingClientRect();
         const buttonX = buttonRect.left + buttonRect.width / 2;
         const buttonY = buttonRect.top + buttonRect.height / 2;
@@ -1468,8 +1480,11 @@ moreAboutMeButton.addEventListener('mousemove', (e) => {
 });
 
 function resetMoreAboutMeButtonPosition() {
-    moreAboutMeButton.style.transition = 'transform 0.2s ease';
-    moreAboutMeButton.style.transform = 'translate(0, 0)';
+    // Check if the screen width is greater than 720px
+    if (window.innerWidth > 720) {
+        moreAboutMeButton.style.transition = 'transform 0.2s ease';
+        moreAboutMeButton.style.transform = 'translate(0, 0)';
+    }
 }
 
 // Add your click event handler for the "More About Me" button here
