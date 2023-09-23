@@ -855,6 +855,7 @@
         }
 
       
+        
         .arrow-container{
             position: relative;
             top: -30%;
@@ -894,6 +895,12 @@
             width: 70px;
             height: 70px;
         }
+
+
+        .arrow:active,
+.arrow:focus {
+    outline: none;
+}
 
         .center-button {
         text-align: center;
@@ -1179,7 +1186,7 @@ document.querySelector('.LogoName').addEventListener('click', function () {
     });
 });
 
-
+//==========================================changes logo color==============================================
 window.addEventListener('scroll', () => {
     const yellowSection = document.querySelector('.yellow-section');
     const whiteSection = document.querySelector('.white-section');
