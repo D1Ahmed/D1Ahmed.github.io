@@ -281,6 +281,7 @@
             font-size: 40px;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+            outline: none;
         }
 
         .arrow.left {
@@ -298,6 +299,7 @@
             color: black;
             width: 100px;
             height: 100px;
+            outline: none;
         }
 
         
@@ -763,7 +765,13 @@
 @media screen and (max-width: 720px) {
 
     
-
+    input, .arrow, .menu-button,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
     
 
     .mobile-menu-icon {
@@ -877,16 +885,26 @@
             font-size: 20px;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+            outline: none;
+        
+
+background-color: transparent;
         }
 
         .arrow.left {
             left: 20px;
             border: 1px solid white;
+            outline: none;
+
+background-color: transparent;
         }
 
         .arrow.right {
             right: 20px;
             border: 1px solid white;
+            outline: none;
+
+background-color: transparent;
         }
 
         .arrow:hover {
@@ -894,13 +912,19 @@
             color: white;
             width: 70px;
             height: 70px;
+            outline: none;
+            outline: none;
+
+background-color: transparent;
         }
-
-
-        .arrow:active,
-.arrow:focus {
+        .arrow:focus {
     outline: none;
+
+    background-color: transparent;
 }
+
+
+
 
         .center-button {
         text-align: center;
