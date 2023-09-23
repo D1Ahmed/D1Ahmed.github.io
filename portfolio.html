@@ -20,7 +20,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background-color: black;    
+            background-color: black;   
+            text-decoration: none 
         }
 
         .nav .LogoName {
@@ -42,6 +43,9 @@
         .nav .LogoName .yellow-dot {
             color: yellow;
             text-decoration:none ;
+        }
+        .nav a{
+            text-decoration: none;
         }
 
         /* ... Your existing navigation menu styles ... */
@@ -348,6 +352,22 @@
             text-decoration:none ;
         }
 
+        .nav .LogoName a {
+    background-color: transparent;
+    text-decoration: none;
+    outline: none; /* This removes the outline when the link is focused */
+}
+
+.nav .LogoName a:focus {
+    outline: none !important;
+    /* Add any additional styling or background you prefer */
+    /* For example, you can set a background color to transparent */
+    background-color: transparent;
+}
+
+.nav .LogoName a:-webkit-any-link {
+    outline: none;
+}
         /* ... Your existing navigation menu styles ... */
 
  
@@ -628,7 +648,7 @@
         <a href="index.html">
             <h2 class="LogoName" id="logo">
                 <span class="background"></span>
-                d<span class="yellow-dot">.</span>A
+                d<span class="yellow-dot" id="dot">.</span>A
             </h2>
         </a>
         <div class="hamburger-icon" id="hamburgerIcon">&#9776;</div>
