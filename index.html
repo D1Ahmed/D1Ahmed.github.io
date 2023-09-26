@@ -77,47 +77,6 @@
 
 
 
-
-        
-
-        /* ... Your existing navigation menu styles ... */
-
-        .portfolio-container {
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .video-card {
-            margin: 20px;
-            width: 300px;
-            background-color: #333;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        .video-card video {
-            width: 100%;
-            height: auto;
-        }
-
-        .video-card-content {
-            padding: 15px;
-        }
-
-        .video-title {
-            font-size: 20px;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .video-description {
-            font-size: 16px;
-            color: #ccc;
-        }
-
         .slide-menu {
             position: fixed;
             top: -100%; /* Start offscreen */
@@ -816,14 +775,32 @@ a {
         font-size: 15px;
     }
 
-    /* CSS for mobile video */
-        /* CSS for mobile video */
-        .videoProject {
+
+
+.MainContent{
+  
+    margin: 0;
+    height: 100vh; /* Make the container cover 100% of the viewport height */
+    width: 100%;
+    overflow: hidden;
+}
+    .project {
+            position: relative;
+           width: 100%;
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+         
+
+        }
+                .videoProject {
         position: absolute;
         top: 100%; /* Center the video vertically */
-        left: 50%; /* Center the video horizontally */
+       /* Center the video horizontally */
         transform: translate(-50%, -50%); /* Center the video both horizontally and vertically */
-        width: 60%; /* Adjust the width of the video */
+        width: 100%; /* Adjust the width of the video */
         max-height: 100vh; /* Adjust the maximum height of the video */
         z-index: -1; /* Place it behind other content */
         border-radius: 5px;
@@ -832,18 +809,8 @@ a {
         transform-origin: center center; /* Set transform origin to the center */
     }
 
-    .project {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: black;
-        }
-
         .project video {
-            width: 90%;
+            width: 95%;
             max-height: 100%;
             border-radius: 5px;
             filter: grayscale(0%);
@@ -851,38 +818,41 @@ a {
             transform-origin: center center;
             z-index: 0;
             top: 200px;
+            
         }
 
     /* CSS for text overlay */
     .Titles {
-    position: relative;
-    top: 65%;
+   
+        position: relative;
+    top: 70%;
     left: 50%;
     color: white;
-    font-size: 80%; /* Adjust the font size as needed */
-    line-height: 1.5%; /* Adjust the line height as needed */
-    padding: 20% 10%; /* Adjust padding using percentages */
+    font-size: 100%; /* Adjust the font size as needed */
+   
+    padding: 0% 10%; /* Adjust padding using percentages */
     text-align: left;
-    
+ 
   
     max-width: 100%; /* You can adjust this percentage */
-  
-    margin: 0;
-   
+ 
+    white-space:inherit;
 }
 
-.MG{
-    left: -10px;
+
+.MG {
+    position: relative;
+  top:  -10px; /* Adjust margin-top as needed */
+  right: 10px;
 }
 
-     
+.desc {
+    position: relative;
+    top:  -20px; /* Adjust margin-top as needed */
+
+}   
 .Titles .yellow-line {
-            position: absolute;
-            top: 40px;
-            left:50px;
-            width: 4px;
-            height: 20px;
-            background-color: yellow;
+        
             display: none;
         }
 
@@ -890,7 +860,7 @@ a {
         
         .arrow-container {
     position: relative;
-    top: -30%;
+    top: -38%;
 }
 
 .arrow {
@@ -971,20 +941,13 @@ a {
 }
 
 
-        .center-button {
-        text-align: center;
-        margin-top: 1px; /* Adjust the margin as needed */
-    }
 
 
 
-        .center-button {
-        text-align: center;
-        margin-top: 1px; /* Adjust the margin as needed */
-    }
+
 
     #seeMoreButton {
-        position: absolute;
+        position: relative;
     background-color: grayscale(100%);
     border: 2px solid grayscale(100%);
     color: white;
@@ -993,8 +956,8 @@ a {
    border-radius: 1px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-    left: 31%;
-    top: 85%;
+    left: 0;
+    top: 80px;
     
 }
 
@@ -1068,7 +1031,7 @@ a {
     align-items: left  ; /* Center services horizontally */
     top: 10%;
    text-align: left;
-    grid-gap:10%;
+    grid-gap:20%;
 
 
     
@@ -1092,8 +1055,8 @@ a {
 
 .service h2 {
     font-weight: bold;
-    padding-bottom: 10px;
-    margin-bottom: 10px; /* Add margin below the heading */
+    padding-bottom: 5px;
+    margin-bottom: 5px; /* Add margin below the heading */
     color: rgb(255, 0, 72);
     text-align: left;
     font-size: 125%;
