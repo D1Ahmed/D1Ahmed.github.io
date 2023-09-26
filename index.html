@@ -888,64 +888,63 @@ a {
 
       
         
-        .arrow-container{
-            position: relative;
-            top: -30%;
-        }
-
-
-    .arrow {
-           
-            top: 1%;
-            width: 70px;
-            height: 70px;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
-            outline: none;
-        
-
-background-color: transparent;
-        }
-
-        .arrow.left {
-            left: 20px;
-            border: 1px solid white;
-            outline: none;
-
-background-color: transparent;
-        }
-
-        .arrow.right {
-            right: 20px;
-            border: 1px solid white;
-            outline: none;
-
-background-color: transparent;
-        }
-
-        .arrow:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            width: 70px;
-            height: 70px;
-            outline: none;
-            outline: none;
-
-background-color: transparent;
-        }
-        .arrow:focus {
-    outline: none;
-
-    background-color: transparent;
+        .arrow-container {
+    position: relative;
+    top: -30%;
 }
+
+.arrow {
+    top: 1%;
+    width: 70px;
+    height: 70px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+    outline: none;
+}
+
+.arrow.left {
+    left: 20px;
+    border: 1px solid white;
+}
+
+.arrow.right {
+    right: 20px;
+    border: 1px solid white;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 80px; /* Increase the size when hovered */
+    height: 80px; /* Increase the size when hovered */
+    transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease; /* Smooth transition when hovered */
+}
+
+.arrow:active {
+    background-color: white; /* Fill with white color when clicked */
+    color: black; /* Change the text color when clicked */
+    width: 80px; /* Increase the size when clicked */
+    height: 80px; /* Increase the size when clicked */
+    transition: background-color 0.1s ease, color 0.1s ease, width 0.1s ease, height 0.1s ease; /* Smooth transition when clicked */
+}
+
+/* Add transition back to default size when not in :active state */
+.arrow:not(:active) {
+    width: 70px;
+    height: 70px;
+    transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease; /* Smooth transition to default when not in :active state */
+
+    
+}
+
 
 .project-indicator {
   top: -50%;
