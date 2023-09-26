@@ -302,7 +302,31 @@
             outline: none;
         }
 
-        
+        .project-indicator {
+  top: -30%;
+  left: 55%;
+            position: relative;
+            display: flex;
+    justify-content: center;
+
+    width: 10%;
+   
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #333; /* Inactive dot color */
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #999; /* Active dot color */
+}
+
+
         .center-button {
         text-align: center;
         margin-top: 1px; /* Adjust the margin as needed */
@@ -923,6 +947,35 @@ background-color: transparent;
     background-color: transparent;
 }
 
+.project-indicator {
+  top: -50%;
+  left: 40%;
+            position: relative;
+            display: flex;
+    justify-content: center;
+
+    width: 20%;
+   
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #333; /* Inactive dot color */
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #999; /* Active dot color */
+}
+
+
+        .center-button {
+        text-align: center;
+        margin-top: 1px; /* Adjust the margin as needed */
+    }
 
 
 
@@ -1155,6 +1208,13 @@ background-color: transparent;
 </div>
 
 <div class="menu-button" id="menuButton">&#9776;</div>
+
+<div class="project-indicator">
+    <div class="dot" id="dot1" onclick="goToProject(1)"></div>
+    <div class="dot" id="dot2" onclick="goToProject(2)"></div>
+    <div class="dot" id="dot3" onclick="goToProject(3)"></div>
+</div>
+
  
 
 <!--==========================================Yellow wala section===========================================-->
@@ -1321,6 +1381,8 @@ if (window.innerWidth > 1024 || window.innerWidth > 720 ) {
     });
 }
 
+
+//=======================================Use arrows to show next project=============================
 let currentProject = 1;
 const totalProjects = 3; // Update this with the total number of projects
 
@@ -1332,6 +1394,12 @@ function showPrevProject() {
                 const nextVideo = nextProjectElement.querySelector('.videoProject');
                 const currentTitles = currentProjectElement.querySelector('.Titles');
                 const nextTitles = nextProjectElement.querySelector('.Titles');
+
+
+                const currentDot = document.getElementById(`dot${currentProject}`);
+        currentDot.classList.remove('active');
+        const prevDot = document.getElementById(`dot${currentProject - 1}`);
+        prevDot.classList.add('active');
 
                 // Fade out the current video
                 currentVideo.style.opacity = '0';
@@ -1365,6 +1433,12 @@ function showPrevProject() {
                 const currentTitles = currentProjectElement.querySelector('.Titles');
                 const nextTitles = nextProjectElement.querySelector('.Titles');
 
+
+                const currentDot = document.getElementById(`dot${currentProject}`);
+        currentDot.classList.remove('active');
+        const nextDot = document.getElementById(`dot${currentProject + 1}`);
+        nextDot.classList.add('active');
+
                 // Fade out the current video
                 currentVideo.style.opacity = '0';
 
@@ -1390,6 +1464,55 @@ function showPrevProject() {
 
 // Show the initial project (Project 1)
 document.getElementById(`project${currentProject}`).style.display = 'block';
+
+
+//============================================dots indictaing vdieo==================================
+function initializeDots() {
+    for (let i = 1; i <= totalProjects; i++) {
+        const dot = document.getElementById(`dot${i}`);
+        dot.addEventListener('click', () => {
+            goToProject(i);
+        });
+    }
+    // Initially, set the first dot as active
+    const firstDot = document.getElementById('dot1');
+    firstDot.classList.add('active');
+}
+
+// Show the initial project (Project 1)
+document.getElementById(`project${currentProject}`).style.display = 'block';
+
+// Initialize the dots
+initializeDots();
+
+
+
+function goToProject(projectNumber) {
+    if (projectNumber >= 1 && projectNumber <= totalProjects) {
+        // Update the current project
+        currentProject = projectNumber;
+
+        // Update the active dot
+        for (let i = 1; i <= totalProjects; i++) {
+            const dot = document.getElementById(`dot${i}`);
+            if (i === currentProject) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        }
+
+        // Show the selected project
+        for (let i = 1; i <= totalProjects; i++) {
+            const project = document.getElementById(`project${i}`);
+            if (i === currentProject) {
+                project.style.display = 'block';
+            } else {
+                project.style.display = 'none';
+            }
+        }
+    }
+}
 
 
 
