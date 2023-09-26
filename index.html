@@ -998,29 +998,14 @@ a {
     
 }
 
-#moreAboutMeButton {
-    position: relative;
-    background-color: transparent;
-    border: 2px solid black; /* Initial border color */
-    color: black;
-    padding: 2% 4%;
-    font-size: 80%;
-    cursor: pointer;
-   
-    text-align: center;
-    top: 10%;
-    left: -0%;
-   
-    
-}
+/*Yellow section ki text ki  animation ka CSS*/
+.yellow-section {
+    background-color: yellow;
+    height: fit-content;
+  
+  }
 
-.mobile-disable-animation {
-        transition: color 0.3s ease; /* Keep color transition */
-    }
-
-
-
-.YellowSecText {
+  .YellowSecText {
     position: relative;
     font-size: 110%;
     font-weight: 600%;
@@ -1034,16 +1019,33 @@ a {
     
 }
 
+#moreAboutMeButton {
+    position: relative;
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 2% 4%;
+    font-size: 80%;
+    cursor: pointer;
+    text-align: center;
+    top: 20%; /* Adjust this value to add space */
+    left: -0%;
+    margin-bottom: 20px;
+    
+}
 
-/*Yellow section ki text ki  animation ka CSS*/
-.yellow-section {
-    background-color: yellow;
-    height: 50vh; 
-  }
+.mobile-disable-animation {
+        transition: color 0.3s ease; /* Keep color transition */
+    }
+
+
+
+
+
 
 .white-section {
     background-color: white;
-    height: 100vh; /* Adjust the height as needed */
+    height: fit-content; /* Adjust the height as needed */
     padding: 5%; /* Add padding to space the content from the edges */
     display: flex;
     flex-direction: column; 
@@ -1079,6 +1081,7 @@ a {
     display: flex;
     flex-direction: column; /* Arrange services vertically */
     align-items: center; 
+    margin:20px   ;
     
     
 }
