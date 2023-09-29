@@ -324,6 +324,7 @@
 .yellow-section .LogoName {
             color: blue; /* Change to your desired color */
         }
+        
 #moreAboutMeButton {
     position: relative;
     background-color: transparent;
@@ -978,6 +979,11 @@ a {
   
   }
 
+  .visible-on-mobile {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.5s ease, transform 0.5s ease !important;
+}
   .YellowSecText {
     position: relative;
     font-size: 140%;
@@ -991,11 +997,8 @@ a {
    left: 0%;
 
    margin-top: 15%;
-   margin-bottom: 10%;
-   
-
-  
-    
+   margin-bottom: 10%;   
+   background-color: aqua; 
 }
 
 #moreAboutMeButton {
@@ -1051,7 +1054,7 @@ a {
     grid-gap:40%;
     margin-bottom: 10%;
     left: 0%;
-    background-color: aqua;
+
 
     
 }
