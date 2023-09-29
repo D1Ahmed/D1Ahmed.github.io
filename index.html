@@ -321,6 +321,18 @@
     flex-direction: column;
     align-items: center;
 }
+.YellowSecText {
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    top: 80px;
+    line-height: 2;
+width: 80%;
+
+    
+}
+
 .yellow-section .LogoName {
             color: blue; /* Change to your desired color */
         }
@@ -371,17 +383,6 @@
     transition: opacity 0.5s ease, transform 0.5s ease !important;
 }
 
-.YellowSecText {
-    position: relative;
-    font-size: 40px;
-    font-weight: 600;
-    text-align: center;
-    top: 80px;
-    line-height: 2;
-width: 80%;
-
-    
-}
 
 
 /*Yellow section ki text ki  animation ka CSS*/
@@ -1553,42 +1554,65 @@ function resetSeeMoreButtonPosition() {
 
 
 //===================================TEXXT IN YELLOW WALA SECTION KI ANIMATION THING==========================================
+function animateYellowSectionText() {
+    const yellowSectionText = document.querySelector('.yellow-section .YellowSecText');
+    const rect = yellowSectionText.getBoundingClientRect();
+    const inViewport = (
+        rect.top <= window.innerHeight &&
+        rect.bottom >= 0
+    );
 
-const yellowSecText = document.querySelector('.YellowSecText');
-let isYellowSecTextVisible = false;
-
-// Options for the Intersection Observer
-const options = {
-  root: null, // Use the viewport as the root
-  rootMargin: '0px', // No margin
-  threshold: 0.5, // Trigger when 50% of the element is visible
-};
-
-// Function to handle the intersection changes
-function handleIntersection(entries) {
-  const entry = entries[0];
-  if (entry.isIntersecting) {
-    yellowSecText.style.opacity = '1';
-    yellowSecText.style.transform = 'translateY(0)';
-    isYellowSecTextVisible = true;
-  } else {
-    yellowSecText.style.opacity = '0';
-    yellowSecText.style.transform = 'translateY(40px)';
-    isYellowSecTextVisible = false;
-  }
+    if (inViewport) {
+        yellowSectionText.style.opacity = '1';
+        yellowSectionText.style.transform = 'translateY(0)';
+    } else {
+        yellowSectionText.style.opacity = '0';
+        yellowSectionText.style.transform = 'translateY(40px)';
+    }
 }
 
-// Create the Intersection Observer
-const observer = new IntersectionObserver(handleIntersection, options);
+// Function to handle scroll events for the yellow section text
+function handleScrollYellowSectionText() {
+    animateYellowSectionText();
+}
 
-// Start observing the yellowSecText element
-observer.observe(yellowSecText);
+// Attach an event listener to the scroll event for the yellow section text
+window.addEventListener('scroll', handleScrollYellowSectionText);
+
+// Initial check to animate the yellow section text
+animateYellowSectionText();
 
 
-// Initial check to show/hide text
-toggleYellowSecTextVisibility();
-// Attach an event listener to the scroll event
-window.addEventListener('scroll', toggleYellowSecTextVisibility);
+// Function to animate elements within the white section
+function animateElementsInWhiteSection() {
+    const whiteElements = document.querySelectorAll('.white-section .animate-element');
+    whiteElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const inViewport = (
+            rect.top <= window.innerHeight &&
+            rect.bottom >= 0
+        );
+
+        if (inViewport) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        } else {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(40px)';
+        }
+    });
+}
+
+// Function to handle scroll events for the white section
+function handleScrollWhiteSection() {
+    animateElementsInWhiteSection();
+}
+
+// Attach an event listener to the scroll event for the white section
+window.addEventListener('scroll', handleScrollWhiteSection);
+
+// Initial check to animate elements in the white section
+animateElementsInWhiteSection();
 
 
 //======================================MORE ABOUT ME BUTTON KI ANIMATION THINGY LOL===============================================
@@ -1648,44 +1672,6 @@ function resetMoreAboutMeButtonPosition() {
 //==============================================white waly section k elements ki animations===============================
 
 
-// Function to check if an element is in the viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Function to toggle the visibility of elements based on their visibility in the viewport
-function toggleElementsVisibility() {
-    const offering = document.querySelector('.offering');
-    const serviceUpElements = document.querySelectorAll('.serviceUp.animate-element');
-    const serviceDownElements = document.querySelectorAll('.serviceDown.animate-element');
-
-    offering.style.opacity = isInViewport(offering) ? '1' : '0';
-    offering.style.transform = isInViewport(offering) ? 'translateY(0)' : 'translateY(40px)';
-
-    serviceUpElements.forEach((serviceUp) => {
-        const isVisible = isInViewport(serviceUp);
-        serviceUp.style.opacity = isVisible ? '1' : '0';
-        serviceUp.style.transform = isVisible ? 'translateY(0)' : 'translateY(40px)';
-    });
-
-    serviceDownElements.forEach((serviceDown) => {
-        const isVisible = isInViewport(serviceDown);
-        serviceDown.style.opacity = isVisible ? '1' : '0';
-        serviceDown.style.transform = isVisible ? 'translateY(0)' : 'translateY(40px)';
-    });
-}
-
-// Initial check to toggle the visibility of elements
-toggleElementsVisibility();
-
-// Attach an event listener to the scroll event
-window.addEventListener('scroll', toggleElementsVisibility);
 
 
 //========================================Contact Me Button ki Animation================================================
