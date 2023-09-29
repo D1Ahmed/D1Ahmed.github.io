@@ -17,9 +17,9 @@
 
         body {
            
-            font-family: 'Alata';font-size: 22px;
+            font-family:Bwnistagrot bd,sans-serif;font-size: 22px;
             margin: 0;
-            height: 100vh; /* Make the body cover 100% of the viewport height */
+         
   
         }
         ::-webkit-scrollbar {
@@ -262,7 +262,7 @@
         }
 
         .project-indicator {
-  top: -30%;
+  top: -10%;
   left: 55%;
             position: relative;
             display: flex;
@@ -749,6 +749,11 @@ width: 80%;
 
 @media screen and (max-width: 720px) {
 
+   .body{
+    margin: 0;
+    background-color:white ;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+   }
     
     input, .arrow, .menu-button,
 textarea,
@@ -767,11 +772,18 @@ a {
         font-size: 25px;
      
     }
-   
-    .mobile-menu {
-        display: none; /* Display the mobile menu */
-     
-    }
+    .slide-menu {
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: yellow;
+    transition: top 0.5s ease-in-out;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+ 
 
     .LogoName{
         left: 8%;
@@ -914,7 +926,7 @@ a {
 
 
 .project-indicator {
-  top: -50%;
+  top: -37%;
   left: 40%;
             position: relative;
             display: flex;
@@ -1038,12 +1050,14 @@ a {
    text-align: left;
     grid-gap:40%;
     margin-bottom: 10%;
-
+    left: 0%;
+    background-color: aqua;
 
     
 }
 
 .service {
+    position: relative;
     max-width: 100%; /* Allow services to take the full width of the container */
     text-align: left; /* Center the text in each service box */
     margin: 1px 0; /* Reduce the margin between each service box (top and bottom) */
@@ -1053,7 +1067,7 @@ a {
     flex-direction: column; /* Arrange services vertically */
     align-items: left; 
     margin:30px  ;
- right: 10%;
+
 
  width: 100%;
     
@@ -1083,6 +1097,7 @@ a {
     top: 20%;
 }
 
+
  
 }
 
@@ -1091,7 +1106,7 @@ a {
 
     </style>
 </head>
-<body style="background-color: #000;">
+<body >
 
     
     <div class="MainContent">
@@ -1163,7 +1178,11 @@ a {
     </div>
 
 
-   
+   <div class="project-indicator">
+    <div class="dot" id="dot1" onclick="goToProject(1)"></div>
+    <div class="dot" id="dot2" onclick="goToProject(2)"></div>
+    <div class="dot" id="dot3" onclick="goToProject(3)"></div>
+</div>
     
 
     <!-- Left arrow -->
@@ -1176,6 +1195,7 @@ a {
     </div>
 </div>
 
+
 <div class="slide-menu" id="slideMenu">
     <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
@@ -1185,11 +1205,7 @@ a {
 
 <div class="menu-button" id="menuButton">&#9776;</div>
 
-<div class="project-indicator">
-    <div class="dot" id="dot1" onclick="goToProject(1)"></div>
-    <div class="dot" id="dot2" onclick="goToProject(2)"></div>
-    <div class="dot" id="dot3" onclick="goToProject(3)"></div>
-</div>
+
 
  
 
