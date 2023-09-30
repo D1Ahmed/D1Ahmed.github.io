@@ -10,8 +10,10 @@
         /* Your existing CSS styles here */
 
         body {
-            background-color: black;
+         
             font-family: 'Alata', sans-serif;
+            margin: 0;
+         
         }
 
         .nav {
@@ -130,16 +132,81 @@
 
         .menu-button {
             position: absolute;
-            top: 20px;
+            top: 40px;
             right: 20px;
             font-size: 24px;
             color: white;
             cursor: pointer;
             z-index: 3;
         }
+        .topsec{
+            height: 100vh;
+            background-color: black;
+            width: 100%;
+            
+        }
+
+        .text-box{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            top: 8%;
+            width: 20%;
+            left: 20%;
+        }
+        .mainTxt{
+          
+            padding: 5%,1%;
+            font-size: 40px;
+   
+            position: relative;
+        
+        }
+
+        .midtxt{
+            color: yellow;
+        }
+        .expMe{
+            color: white;
+            font-size: 20px;
+        }
+        .whitesec{
+            background-color: white;
+            height: 150vh;
+        }
+
+        .GostImage img{
+width: 35%;
+position: absolute;
+left:  50%;
+top: 25%;
+filter: grayscale(100%);
+}
+
+.GCUimg img{
+    width: 30%;
+position: absolute;
+
+top: 120%;
+
+}
+
+
     </style>
 </head>
 <body>
+
+    <div class="slide-menu" id="slideMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="portfolio.html">Portfolio</a>
+    </div>
+
+    <div class="menu-button" id="menuButton">&#9776;</div>
+
+
+<div class="topsec">
     <div class="nav">
         <a href="index.html">
             <h2 class="LogoName" id="logo">
@@ -150,21 +217,34 @@
         <div class="hamburger-icon" id="hamburgerIcon">&#9776;</div>
     </div>
 
-    
 
-        <div class="slide-menu" id="slideMenu">
-            <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="portfolio.html">Portfolio</a>
+
+        <div class="text-box">
+            <h1 class="mainTxt" style="color: white;">
+                A developer & a Gamer at heart.
+            </h1>
+
+            <h2 class="midtxt">About me</h2>
+            <p class="expMe">My name is Dawood Ahmed. I am a professional front end developer and an expert video editor in love with animations and games.</p>
         </div>
 
-        <div class="menu-button" id="menuButton">&#9776;</div>
-
-
+        <div class="GostImage">
+            <img src="Images\CH GOST.png" alt="Ch GOST">
+        </div>    
+        
+</div>
   
 
-    <h1 style="color: white;">About</h1>
+
+
+
+<div class="whitesec">
+
+    <div class="GCUimg">
+        <img src="Images\GCUcrop.jpeg" alt="Ch GOST">
+    </div>    
+
+</div>
 
     <script>
 const slideMenu = document.getElementById('slideMenu');
