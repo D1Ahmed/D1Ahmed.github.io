@@ -172,7 +172,7 @@
         }
         .whitesec{
             background-color: white;
-            height: 150vh;
+            height: 200vh;
         }
 
         .GostImage img{
@@ -184,11 +184,46 @@ filter: grayscale(100%);
 }
 
 .GCUimg img{
-    width: 30%;
+width: 30%;
 position: absolute;
 
-top: 120%;
+top: 140%;
 
+}
+#whiteSecHead{
+    top: 5%;
+    padding: 0%;
+    width: 22%;
+    position: relative;
+    left: 20%;
+}
+
+.MeMeMe{
+    position: relative;
+   
+    width: 40%;
+    left: 45%;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.skills{
+    display: grid;
+    position: relative;
+ 
+    column-gap: 200px; /* Gap between columns (horizontal gap) */
+    row-gap: 50px; /* Gap between rows (vertical gap) */
+    justify-items: flex-start; /* Left-align the services */
+    font-size: 20px;
+    
+}
+.skills h2{
+    color:rgb(255, 0, 72);
+}
+.vellaSec{
+    height: 100vh;
+    color: #333;
 }
 
 
@@ -239,10 +274,42 @@ top: 120%;
 
 
 <div class="whitesec">
+<h1 id="whiteSecHead">Know more about me & my expertise.</h1>
 
     <div class="GCUimg">
         <img src="Images\GCUcrop.jpeg" alt="Ch GOST">
-    </div>    
+    </div>   
+    
+    
+    <div class="MeMeMe">
+    
+        <div class="skills">
+            <div class="Intro serviceUp animate-element">
+                <h2>Who am I?</h2>
+                <p>From small documentary, to explainers, to full storytelling videos using motion graphics, I will help you move ideas around.</p>
+            </div>
+            <div class="Intro serviceUp animate-element">
+                <h2>Animated Interactions</h2>
+                <p>UX is only complete with engaging animations. These are great for showcase or to guide a dev team.</p>
+            </div>
+            <div class="Intro serviceDown animate-element">
+                <h2>Front-End Web Development</h2>
+                <p>Bringing visual design, animation and development together to uplift your websites and apps.</p>
+            </div>
+            <div class="Intro serviceDown animate-element">
+                <h2>Search Engine Optimisation</h2>
+                <p>Branding your business and generating leads to beat the competition and rank your brand</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="vellaSec">
+    <h1>What do I do when I am not working?</h1>
+
 
 </div>
 
