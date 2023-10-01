@@ -19,7 +19,7 @@
            
             font-family:Bwnistagrot bd,sans-serif;font-size: 22px;
             margin: 0;
-         
+         background-color: black;
   
         }
         ::-webkit-scrollbar {
@@ -58,13 +58,12 @@
 }
 
 
-.MainContent{
-    background-color: black;
+.MainContent {
+    background: transparent; /* Remove background color */
     margin: 0;
     height: 100vh; /* Make the container cover 100% of the viewport height */
     overflow: hidden;
-    }
-
+}
 
 
         /* Styling for the navigation menu */
@@ -164,7 +163,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: black;
+          
+            
             transition: opacity 1s ease-in-out, transform s ease-in-out;
         }
 
@@ -494,6 +494,11 @@ width: 80%;
     transform: scale(1.05);
 }
 
+.background-canvas{
+    position: relative;
+    top: -82%;
+    z-index: -1;
+}
 
 
         /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
@@ -1197,6 +1202,8 @@ a {
         <!-- Right arrow -->
         <div class="arrow right" id="rightArrow" onclick="showNextProject()">&#8250;</div>
     </div>
+
+    <div class="background-canvas"></div>
 </div>
 
 
@@ -1205,6 +1212,7 @@ a {
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="portfolio.html">Portfolio</a>
+    
 </div>
 
 <div class="menu-button" id="menuButton">&#9776;</div>
@@ -1257,7 +1265,82 @@ a {
 
 
 <!--================================JAVAVAVA SCRIPPTT HERREEEE==================================-->
-    <script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+   <script>
+ // Create a scene
+ const scene = new THREE.Scene();
+
+// Create a camera
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.z = 30; // Move the camera farther away
+
+// Create a renderer
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+document.querySelector('.background-canvas').appendChild(renderer.domElement);
+
+
+// Create a complex shape (dodecahedron)
+const geometry = new THREE.DodecahedronGeometry(40, 3); // Increase the size to 30
+const material = new THREE.MeshBasicMaterial({ color: 0x1c1b1b, wireframe: true });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+// Track the previous mouse position
+const prevMouse = { x: 0, y: 0 };
+
+// Handle mouse interaction
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+window.addEventListener('mousemove', (event) => {
+    // Calculate mouse position in normalized device coordinates
+    mouse.x = (event.clientX / window.innerWidth) * 30 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 10 + 1;
+
+    // Check for mouse movement
+    const deltaX = mouse.x - prevMouse.x;
+    const deltaY = mouse.y - prevMouse.y;
+
+    // Rotate the mesh based on mouse movement (increased rotation speed)
+    mesh.rotation.x += deltaY * 0.08;
+    mesh.rotation.y += deltaX * 0.08;
+
+    // Update the previous mouse position
+    prevMouse.x = mouse.x;
+    prevMouse.y = mouse.y;
+
+    // Update the picking ray
+    raycaster.setFromCamera(mouse, camera);
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    const newWidth = window.innerWidth;
+    const newHeight = window.innerHeight;
+
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(newWidth, newHeight);
+});
+
+// Initial animation loop
+function animate() {
+    requestAnimationFrame(animate);
+
+    renderer.render(scene, camera);
+}
+
+animate();
+
+
+
+
+
+
+
 
 document.querySelector('.LogoName').addEventListener('click', function () {
     window.scrollTo({
@@ -1733,6 +1816,11 @@ hamburgerIcon.addEventListener('click', () => {
     }
     isMenuOpen = !isMenuOpen;
 });
+
+
+
+
+
 
     </script>
 </body>
