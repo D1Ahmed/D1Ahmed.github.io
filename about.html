@@ -42,44 +42,7 @@
             color: yellow;
         }
 
-        /* ... Your existing navigation menu styles ... */
-
-        .portfolio-container {
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .video-card {
-            margin: 20px;
-            width: 300px;
-            background-color: #333;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        .video-card video {
-            width: 100%;
-            height: auto;
-        }
-
-        .video-card-content {
-            padding: 15px;
-        }
-
-        .video-title {
-            font-size: 20px;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .video-description {
-            font-size: 16px;
-            color: #ccc;
-        }
-
+       
         .slide-menu {
             position: fixed;
             top: -100%; /* Start offscreen */
@@ -153,6 +116,7 @@
             top: 8%;
             width: 20%;
             left: 20%;
+          
         }
         .mainTxt{
           
@@ -250,7 +214,7 @@ background-color: aqua;
 filter: grayscale(100%);
 position: relative;
 left: 20%;
-top: 300px;
+top: 250px;
 margin: 20px;
 }
 #travel{
@@ -260,6 +224,135 @@ position: relative;
 right: 36.8%;
 top: 340px;
 margin: 20px;
+}
+
+@media screen and (max-width: 720px) {
+
+
+    .text-box{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            top: 2%;
+            width: 90%;
+            left: 5%;
+            
+          
+        }
+        .mainTxt{
+          
+            padding: 1%,1%;
+            font-size: 40px;
+   
+            position: relative;
+        
+        }
+
+        .midtxt{
+            color: yellow;
+        }
+        .expMe{
+            color: white;
+            font-size: 20px;
+        }
+        .whitesec{
+            background-color: white;
+            height: fit-content;
+        }
+
+        .GostImage img{
+width: 95%;
+position: absolute;
+left:  0%;
+top: 60%;
+
+filter: grayscale(100%);
+
+}
+
+.GCUimg img{
+width: 30%;
+position: absolute;
+
+top: 140%;
+display:  none;
+
+}
+#whiteSecHead{
+    top: 5%;
+    padding: 0%;
+    width: 80%;
+    position: relative;
+    left: 5%;
+
+}
+
+.MeMeMe{
+    position: relative;
+   
+    width: 90%;
+    left: 5%;
+    right: 0%;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.skills{
+    display: grid;
+    position: relative;
+ 
+    column-gap: 200px; /* Gap between columns (horizontal gap) */
+    row-gap: 50px; /* Gap between rows (vertical gap) */
+    justify-items: flex-start; /* Left-align the services */
+    font-size: 20px;
+    
+}
+.skills h2{
+    color:rgb(255, 0, 72);
+}
+.vellaSec{
+    height: 200vh;
+    background-color: #33333318;
+}
+
+#Ido{
+ 
+    width: 20%;
+    position: relative;
+    left: 20%;
+    top: 5%;
+}
+#football{
+
+width: 25%;
+filter: grayscale(100%);
+position: relative;
+left: 19%;
+top: -100px;
+margin: 20px;
+background-color: aqua;
+
+}
+
+#game{
+    width: 25%;
+filter: grayscale(100%);
+position: relative;
+left: 20%;
+top: 250px;
+margin: 20px;
+}
+#travel{
+    width: 25%;
+filter: grayscale(100%);
+position: relative;
+right: 36.8%;
+top: 340px;
+margin: 20px;
+}
+
+
 }
 
     </style>
@@ -357,6 +450,8 @@ margin: 20px;
 
 
 </div>
+
+
 
     <script>
 const slideMenu = document.getElementById('slideMenu');
