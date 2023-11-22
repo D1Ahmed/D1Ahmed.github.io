@@ -134,11 +134,6 @@
             color: white;
             font-size: 20px;
         }
-        .whitesec{
-            background-color: white;
-            height: 200vh;
-        }
-
         .GostImage img{
 width: 35%;
 position: absolute;
@@ -147,13 +142,27 @@ top: 25%;
 filter: grayscale(100%);
 }
 
-.GCUimg img{
-width: 30%;
-position: absolute;
+        .whitesec{
+            background-color: white;
+            height: 200vh;
+        }
 
-top: 140%;
 
+.GCUimg img {
+    width: 30%;
+    position: absolute;
+    top: 140%;
+   
+    transform: translateX(-100%);
+    transition: opacity 0.8s, transform 0.8s;
 }
+
+/* Add this CSS to make the image visible when it enters the viewport */
+.GCUimg img.reveal {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 #whiteSecHead{
     top: 5%;
     padding: 0%;
@@ -186,7 +195,7 @@ top: 140%;
     color:rgb(255, 0, 72);
 }
 .vellaSec{
-    height: 200vh;
+    height: 150vh;
     background-color: #33333318;
 }
 
@@ -226,7 +235,78 @@ top: 340px;
 margin: 20px;
 }
 
+.Bottom{
+    background-color: black;
+    height: 50vh; /* Adjust the height as needed */
+    
+}
+
+.BH1{
+    color: white;
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+#ContactButton {
+    background-color: black;
+    border: 2px solid grayscale(100%);
+    color: white;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    outline: 2px solid palevioletred; /* Set the palevioletred outline for both default and hover states */
+    position: relative; /* Position the button absolutely */
+    left: 45%;
+    top: 100px;
+}
+
+#ContactButton:hover {
+    background-color: yellow;
+    color: black;
+    transform: scale(1.05);
+}
+
+.animate-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        /* Add this CSS to make the element visible when it enters the viewport */
+        .animate-element.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 @media screen and (max-width: 720px) {
+
+    .menu-button {
+        display: block; /* Display the mobile menu icon */
+        position: absolute; 
+        top: 25px; /* Adjust the top position as needed */
+        right: 25px; /* Adjust the right position as needed */
+        font-size: 25px;
+     
+    }
+    .slide-menu {
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: yellow;
+    transition: top 0.5s ease-in-out;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+ 
+
+    .LogoName{
+        left: 8%;
+        font-size: 15px;
+    }
 
 
     .text-box{
@@ -240,7 +320,7 @@ margin: 20px;
           
         }
         .mainTxt{
-          
+            
             padding: 1%,1%;
             font-size: 40px;
    
@@ -280,7 +360,7 @@ display:  none;
 }
 #whiteSecHead{
     top: 5%;
-    padding: 0%;
+    padding-top: 10%;
     width: 80%;
     position: relative;
     left: 5%;
@@ -414,10 +494,9 @@ margin: 20px;
 
 <div class="whitesec">
 <h1 id="whiteSecHead">Know more about me & my expertise.</h1>
-
-    <div class="GCUimg">
-        <img src="Images\GCUcrop.jpeg" alt="Ch GOST">
-    </div>   
+<div class="GCUimg">
+    <img src="Images\GCUcrop.jpeg" alt="Ch GOST" class="reveal">
+</div>
     
     
     <div class="MeMeMe">
@@ -425,19 +504,19 @@ margin: 20px;
         <div class="skills">
             <div class="Intro serviceUp animate-element">
                 <h2>Who am I?</h2>
-                <p>From small documentary, to explainers, to full storytelling videos using motion graphics, I will help you move ideas around.</p>
+                <p>I am a Computer Science student, a professional Front-End developer and an expert Video Editor. I started my earning career from video editing, video editing is my hobby while programming is my passion</p>
             </div>
             <div class="Intro serviceUp animate-element">
-                <h2>Animated Interactions</h2>
-                <p>UX is only complete with engaging animations. These are great for showcase or to guide a dev team.</p>
+                <h2>Skills</h2>
+                <p>From advance video editing and motion graphics to short explainer vdieos, I do all. I also make 2d animations and cartoons on Adobe Animate, love creating Animations. I design reponsive and attractive web-pages to make your site standout.</p>
             </div>
             <div class="Intro serviceDown animate-element">
-                <h2>Front-End Web Development</h2>
-                <p>Bringing visual design, animation and development together to uplift your websites and apps.</p>
+                <h2>What I am learning?</h2>
+                <p>Currently, I'm diving into the fascinating realm of AI model training and deep learning using Python. Exploring the vast landscape of AI and cybersecurity feels like unlocking the next big chapter in the world of Computer Science—a thrilling journey into cutting-edge technologies that are shaping the future</p>
             </div>
             <div class="Intro serviceDown animate-element">
-                <h2>Search Engine Optimisation</h2>
-                <p>Branding your business and generating leads to beat the competition and rank your brand</p>
+                <h2>My Hobbies</h2>
+                <p> You'll often find me immersed in the world of video games. Beyond the enjoyment, gaming serves as a muse, sparking inspiration to shape my own ideas into interactive adventures</p>
             </div>
         </div>
 
@@ -462,9 +541,17 @@ margin: 20px;
 
 </div>
 
+<div class="Bottom">
 
+    <h1 class="BH1">Let's work together</h1>
+    <button id="ContactButton">Contact Me</button>
+    </div>
+    
+</body>
 
     <script>
+
+
 const slideMenu = document.getElementById('slideMenu');
 const hamburgerIcon = document.getElementById('hamburgerIcon');
 const menuButton = document.getElementById('menuButton');
@@ -489,7 +576,44 @@ hamburgerIcon.addEventListener('click', () => {
     isMenuOpen = !isMenuOpen;
 });
 
+
+ document.addEventListener("DOMContentLoaded", function () {
+            // Function to check if an element is in the viewport
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            // Function to handle the scroll event
+            function handleScroll() {
+                var elements = document.querySelectorAll('.animate-element');
+
+                elements.forEach(function (element) {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('reveal');
+                    }
+                });
+            }
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
+
+            // Initial check on page load
+            handleScroll();
+        });
+
+
+
+
+
+
+
  
     </script>
-</body>
+
 </html>
