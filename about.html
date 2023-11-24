@@ -322,6 +322,21 @@ a {
     display: flex;
     flex-direction: column;
 }
+.slide-menu a.active {
+    position: relative; /* Add relative positioning to the link */
+}
+
+
+.slide-menu a.active::after {
+    content: ""; /* Add an empty content property */
+    position: absolute; /* Position the line absolutely */
+    bottom: 45%; /* Align it to the bottom of the link */
+    left: 5%; /* Align it to the left of the link */
+    width: 250%; /* Make it cover the entire link width */
+    height: 5px; /* Set the height of the line */
+    background-color: black; /* Color of the line */
+    border-radius: 20px;
+}
  
 
     .LogoName{

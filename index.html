@@ -315,7 +315,7 @@
 
 
     .yellow-section {
-    background-color: yellow;
+    background-color: yellow; 
     height: 50vh; /* 50% of the viewport height */
     display: flex;
     flex-direction: column;
@@ -370,7 +370,7 @@ width: 80%;
 }
 
 #moreAboutMeButton:hover {
-    color: white; /* Change text color on hover */
+    color: rgb(255, 255, 255); /* Change text color on hover */
    
     transform: scale(1.05); /* Add a slight scale effect on hover */
     transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease; /* Add transitions */
@@ -790,7 +790,21 @@ a {
     display: flex;
     flex-direction: column;
 }
- 
+.slide-menu a.active {
+    position: relative; /* Add relative positioning to the link */
+}
+
+
+.slide-menu a.active::after {
+    content: ""; /* Add an empty content property */
+    position: absolute; /* Position the line absolutely */
+    bottom: 45%; /* Align it to the bottom of the link */
+    left: 5%; /* Align it to the left of the link */
+    width: 400%; /* Make it cover the entire link width */
+    height: 5px; /* Set the height of the line */
+    background-color: black; /* Color of the line */
+    border-radius: 20px;
+}
 
     .LogoName{
         left: 8%;
@@ -1025,10 +1039,6 @@ a {
 .mobile-disable-animation {
         transition: color 0.3s ease; /* Keep color transition */
     }
-
-
-
-
 
 
 .white-section {
@@ -1270,8 +1280,12 @@ a {
 
 
 <!--================================JAVAVAVA SCRIPPTT HERREEEE==================================-->
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
    <script>
+
+    //=============================================dodecahedron animation================================----------
  // Create a scene
  const scene = new THREE.Scene();
 
@@ -1287,7 +1301,7 @@ document.querySelector('.background-canvas').appendChild(renderer.domElement);
 
 
 // Create a complex shape (dodecahedron)
-const geometry = new THREE.DodecahedronGeometry(40, 3); // Increase the size to 30
+const geometry = new THREE.DodecahedronGeometry(35, 3); // Increase the size to 30
 const material = new THREE.MeshBasicMaterial({ color: 0x262626, wireframe: true });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
@@ -1345,7 +1359,7 @@ animate();
 
 
 
-
+//=======================================Logo send you to top================================
 
 document.querySelector('.LogoName').addEventListener('click', function () {
     window.scrollTo({
@@ -1444,6 +1458,8 @@ if (window.innerWidth > 1024 || window.innerWidth > 720 ) {
         });
     });
 
+
+    
     /* Video MOVEMENT THING for all videos */
     videos.forEach((video) => {
         video.addEventListener('mousemove', (e) => {
